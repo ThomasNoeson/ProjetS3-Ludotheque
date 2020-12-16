@@ -86,14 +86,14 @@
                             @endforeach
 
                             <div class="border-t border-gray-100"></div>
-                    @endif
+                        @endif
 
-                    <!-- Authentication -->
+                        <!-- Authentication -->
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
 
                             <x-jet-dropdown-link href="{{ route('logout') }}"
-                                                 onclick="event.preventDefault();
+                                                onclick="event.preventDefault();
                                                             this.closest('form').submit();">
                                 {{ __('Logout') }}
                             </x-jet-dropdown-link>
@@ -147,12 +147,12 @@
                     </x-jet-responsive-nav-link>
                 @endif
 
-            <!-- Authentication -->
+                <!-- Authentication -->
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
 
                     <x-jet-responsive-nav-link href="{{ route('logout') }}"
-                                               onclick="event.preventDefault();
+                                    onclick="event.preventDefault();
                                                 this.closest('form').submit();">
                         {{ __('Logout') }}
                     </x-jet-responsive-nav-link>

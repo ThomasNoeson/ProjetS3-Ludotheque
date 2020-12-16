@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Log;
 
 class Jeu extends Model {
     use HasFactory;
@@ -13,10 +14,6 @@ class Jeu extends Model {
 
     protected $fillable = ['nom', 'description', 'regles', 'langue',
         'url_media', 'age', 'nombre_joueurs', 'categorie', 'duree'];
-    /**
-     * @var mixed
-     */
-    private $regles;
 
     function createur() {
         return $this->belongsTo(User::class);
@@ -33,6 +30,7 @@ class Jeu extends Model {
     function mecaniques() {
         return $this->belongsToMany(Mecanique::class, 'avec_mecaniques');
     }
+
     function acheteurs() {
         return $this->belongsToMany(User::class, 'achats')
             ->as('achat')

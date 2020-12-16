@@ -15,7 +15,7 @@
           integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 --}}
 
-<!-- Scripts -->
+    <!-- Scripts -->
     <script src="{{ mix('js/app.js') }}" defer></script>
 
     <!-- Styles -->
@@ -25,43 +25,43 @@
 <body style="padding-top: 50px;" class="bg-green-400">
 
 @section('navbar')
-    <nav class="navbar navbar-expand-md navbar-dark bg-green-800 fixed-top">
-        <a class="navbar-brand" href="{{ URL::route('home') }}"><span class="text-2xl pl-2"><i class="fa fa-home"></i> IUT Lens</span></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
-                aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+<nav class="navbar navbar-expand-md navbar-dark bg-green-800 fixed-top">
+    <a class="navbar-brand" href="{{ URL::route('home') }}"><span class="text-2xl pl-2"><i class="fa fa-home"></i> IUT Lens</span></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
+            aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
 
-        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="{{ URL::route('dashboard') }}">dashboard</a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="{{ URL::route('jeu_index') }}">Jeux</a>
-                </li>
+    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="{{ URL::route('dashboard') }}">dashboard</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="{{ URL::route('jeu_index') }}">Jeux</a>
+            </li>
 
-            </ul>
-            <ul class="my-2 my-lg-0 navbar-nav">
-                @guest
-                    <li class="my-2 my-sm-0"><a class="btn btn-success" href="{{ URL::route('login') }}">Login</a></li>
-                @endguest
-                @auth
+        </ul>
+        <ul class="my-2 my-lg-0 navbar-nav">
+            @guest
+                <li class="my-2 my-sm-0"><a class="btn btn-success" href="{{ URL::route('login') }}">Login</a></li>
+            @endguest
+            @auth
                     <li class="my-2 my-lg-0"><!-- Authentication --><span class="text-white">{{ Auth::user()->name }}</span>
-                        <form  method="POST" action="{{ route('logout') }}">
-                            @csrf
+                    <form  method="POST" action="{{ route('logout') }}">
+                        @csrf
 
-                            <x-jet-dropdown-link href="{{ route('logout') }}"
-                                                 onclick="event.preventDefault();
+                        <x-jet-dropdown-link href="{{ route('logout') }}"
+                                             onclick="event.preventDefault();
                                                             this.closest('form').submit();">
-                                {{ __('Logout') }}
-                            </x-jet-dropdown-link>
-                        </form>
-                    </li>
-                @endauth
-            </ul>
-        </div>
-    </nav>
+                            {{ __('Logout') }}
+                        </x-jet-dropdown-link>
+                    </form>
+                </li>
+            @endauth
+        </ul>
+    </div>
+</nav>
 @show
 
 

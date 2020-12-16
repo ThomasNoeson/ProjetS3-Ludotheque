@@ -22,22 +22,22 @@
                         {{ $mecaniques->nom }}
                     @endforeach
                     <hr>
-                    {{ $jeu->categorie }}
+                        {{ $jeu->categorie }}
                     <hr>
-                    Age recommandé : {{ $jeu->age }}
+                        Age recommandé : {{ $jeu->age }}
                     <hr>
-                    {{ $jeu->langue }}
+                        {{ $jeu->langue }}
                     <hr>
-                    {{ $jeu->theme->nom }}
+                        {{ $jeu->theme->nom }}
                     <hr>
-                    Edité par {{ $jeu->editeur->nom }}
+                        Edité par {{ $jeu->editeur->nom }}
                     <hr>
-                    durée : {{ $jeu->duree }}
+                        durée : {{ $jeu->duree }}
                     <hr>
-                    Nombre de joueur : {{ $jeu->nombre_joueurs }}
+                        Nombre de joueur : {{ $jeu->nombre_joueurs }}
                     </p>
                     <hr><hr>
-                    <a href="{{ URL::route('jeu_rules', $jeu->id) }}" class="btn btn-primary">Regarder les régles du jeu</a>
+                        <a href="{{ URL::route('jeu_rules', $jeu->id) }}" class="btn btn-primary">Regarder les régles du jeu</a>
                     <hr><hr>
                 </div>
             </div>

@@ -1,67 +1,64 @@
-<html>
-<head>
-    <title>Formulaire - Marathon du Web 2020 - IUT de Lens</title>
-    <meta charset="utf-8">
-    <meta name="formulaire" content="Formulaire d'ajout d'un jeu">
-    <link rel="stylesheet" href="{{url('style.css')}}">
-</head>
+@extends("base")
 
-<body>
-    <h1 class="blanc">Formulaire d'ajout d'un jeu</h1>
-    <div>
-        <label>Nom</label>
-        <input type="text" class="form-control" id="nom">
-    </div>
-    <div>
-        <label>Description</label>
-        <input type="text" class="form-control" id="description">
-    </div>
-    <div>
-        <label>Thème</label>
-        <select id="theme" class="form-control">
-            <option selected>Choisir...</option>
-            @foreach($themes as $t)
-                <option>{{$t->nom}}</option>
-            @endforeach
-        </select>
-    </div>
-    <div>
-        <label>Éditeur</label>
-        <select id="editeur" class="form-control">
-            <option selected>Choisir...</option>
-            @foreach($editeurs as $e)
-                <option>{{$e->nom}}</option>
-            @endforeach
-        </select>
-    </div>
-    <div>
-        <label>Règles</label>
-        <input type="text" class="form-control" id="regles">
-    </div>
-    <div>
-        <label>Langages</label>
-        <input type="text" class="form-control" id="langages">
-    </div>
-    <div>
-        <label>Url_media</label>
-        <input type="text" class="form-control" id="urlmedia">
-    </div>
-    <div>
-        <label>Age</label>
-        <input type="text" class="form-control" id="age">
-    </div>
-    <div>
-        <label>Nombre de joueurs</label>
-        <input type="text" class="form-control" id="nombrejoueurs">
-    </div>
-    <div>
-        <label>Categorie</label>
-        <input type="text" class="form-control" id="categorie">
-    </div>
-    <div>
-        <label>Duree</label>
-        <input type="text" class="form-control" id="duree">
+@section('title', 'Liste des jeux')
+
+@section('content')
+
+<div class="card">
+    <div class="card-header text-center font-weight-bold">
+        Ajouter un nouveau jeu
     </div>
 
-    <button type="submit" id="bouton">Ajoutez le jeu</button>
-</body>
+    @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
+
+    <div class="card-body">
+        <form name="form-create-jeu" method="post" action="{{ URL::route('jeu_store') }}">
+            @csrf
+            <div class="form-group">
+                <label for="nom">Nom</label>
+                <input type="text" id="nom" name="nom" value="{{ old('nom') }}" class="form-control" required="">
+            </div>
+            <div class="form-group">
+                <label for="description">Description</label>
+                <textarea name="description" class="form-control" required="">
+                    {{ old('description') }}
+                </textarea>
+            </div>
+            <div class="form-group">
+                <label for="description">Theme</label>
+                <select name="theme">
+                    @foreach( \App\Models\Theme::all() as $theme)
+                        @if (old('theme') == $theme->id)
+                            <option value="{{ $theme->id }}" selected>{{ $theme->nom }}</option>
+                        @else
+                            <option value="{{ $theme->id }}">{{ $theme->nom }}</option>
+                        @endif
+                    @endforeach
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="description">Editeur</label>
+                <select name="editeur">
+                    @foreach( \App\Models\Editeur::all() as $editeur)
+                        @if (old('editeur') == $editeur->id)
+                            <option value="{{ $editeur->id }}" selected>{{ $editeur->nom }}</option>
+                        @else
+                            <option value="{{ $editeur->id }}">{{ $editeur->nom }}</option>
+                        @endif
+                    @endforeach
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</div>
+
+@endsection

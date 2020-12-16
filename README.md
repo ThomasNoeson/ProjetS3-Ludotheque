@@ -46,7 +46,7 @@ et refaire les deux commandes précédentes
 <ul>
 <li><strong>users</strong> : les différents utilisateurs enregistrés dans notre application.
 </li>
-<li><strong>jeux</strong> : les différentes jeex stockés dans la base. Le champ regles donne
+<li><strong>jeux</strong> : les différentes jeux stockés dans la base. Le champ regles donne
     les règles du jeu. Le champ description donne une description du jeu. Le champ url_media donne un lien vers un média qui présente le jeu (photo, vidéo, ...).
     La relation "a ajouté" entre un utilisateur et un jeu indique l'identification de l'utilisateur ayant ajouté (créé) le jeu dans la base de données.
 </li>

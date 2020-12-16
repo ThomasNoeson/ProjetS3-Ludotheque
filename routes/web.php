@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\JeuController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -34,3 +37,4 @@ Route::get('/jeux/{sort?}', [JeuController::class, 'index'])->name('jeu_index');
 Route::get('/enonce', function () {
     return view('enonce.index');
 });
+

@@ -16,17 +16,17 @@ class CreateJeuxTable extends Migration
         Schema::create('jeux', function (Blueprint $table) {
             $table->id();
             $table->string('nom', 100);
-            $table->text('description')->nullable(true);
+            $table->text('description');
             $table->text('regles')->nullable(true);
-            $table->string('langue')->default('Fr')->nullable(true);
+            $table->string('langue')->default('Fr');
             $table->string('url_media')->nullable(true);
             $table->integer('age')->nullable(true);
             $table->integer('nombre_joueurs')->nullable(true);
             $table->string('categorie')->nullable(true);
             $table->string('duree')->nullable(true);
-            $table->unsignedBigInteger('user_id')->nullable(true);
-            $table->unsignedBigInteger('theme_id')->nullable(true);
-            $table->unsignedBigInteger('editeur_id')->nullable(true);
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('theme_id');
+            $table->unsignedBigInteger('editeur_id');
             $table->foreign('user_id')->references('id')->on('users')
                 ->onDelete('cascade');
             $table->foreign('theme_id')->references('id')->on('themes')
