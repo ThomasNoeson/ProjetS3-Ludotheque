@@ -39259,23 +39259,8 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-__webpack_require__(/*! /home/belval/Documents/CoursSemestre3/Marathon/ludotheque/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/belval/Documents/CoursSemestre3/Marathon/ludotheque/resources/css/app.css */"./resources/css/app.css");
-=======
-__webpack_require__(/*! /Users/thomas.noeson/Desktop/ludotheque/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Users/thomas.noeson/Desktop/ludotheque/resources/sass/app.scss */"./resources/sass/app.scss");
->>>>>>> fix-12
-=======
-__webpack_require__(/*! C:\Users\Théo\Desktop\marathon\ludotheque\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\Théo\Desktop\marathon\ludotheque\resources\sass\app.scss */"./resources/sass/app.scss");
->>>>>>> q13
-=======
 __webpack_require__(/*! /home/henri/Documents/Marathon/ludotheque/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/henri/Documents/Marathon/ludotheque/resources/sass/app.scss */"./resources/sass/app.scss");
->>>>>>> fix-gerard
+module.exports = __webpack_require__(/*! /home/henri/Documents/Marathon/ludotheque/resources/css/app.css */"./resources/css/app.css");
 
 
 /***/ })
