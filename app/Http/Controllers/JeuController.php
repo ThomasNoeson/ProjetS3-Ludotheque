@@ -40,7 +40,7 @@ class JeuController extends Controller
      */
     public function store(Request $request)
     {
-        
+
         $jeu = new Jeu;
 
         $jeu->nom = $request->nom;
