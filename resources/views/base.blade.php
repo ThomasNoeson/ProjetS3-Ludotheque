@@ -48,7 +48,9 @@
             @endguest
             @auth
                     <li class="my-2 my-lg-0"><!-- Authentication --><span class="text-white">{{ Auth::user()->name }}</span>
+                    <a href="{{url('user/profile')}}" class="text-white no-underline hover:text-gray-200 hover:text-underline py-2 px-4">Profil</a>
                     <form  method="POST" action="{{ route('logout') }}">
+
                         @csrf
 
                         <x-jet-dropdown-link href="{{ route('logout') }}"

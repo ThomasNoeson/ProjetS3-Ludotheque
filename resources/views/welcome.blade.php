@@ -28,6 +28,7 @@
                     <a href="{{ URL::route('jeu_index') }}" class="text-white no-underline hover:text-gray-200 hover:text-underline py-2 px-4">jeux</a>
                     @auth
                         <a href="{{ url('/dashboard') }}" class="text-white no-underline hover:text-gray-200 hover:text-underline py-2 px-4">Dashboard</a>
+                        <a href="{{url('user/profile')}}" class="text-white no-underline hover:text-gray-200 hover:text-underline py-2 px-4">Profil</a>
 
                     @else
                         <a href="{{ route('login') }}" class="text-white no-underline hover:text-gray-200 hover:text-underline py-2 px-4">Connexion</a>
