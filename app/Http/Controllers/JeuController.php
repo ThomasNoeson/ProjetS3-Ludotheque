@@ -259,7 +259,6 @@ class JeuController extends Controller
         return $total/$count;
     }
 
-=======
     public function tri ()
     {
         $jeux = Jeu::all()->sortBy('nom');

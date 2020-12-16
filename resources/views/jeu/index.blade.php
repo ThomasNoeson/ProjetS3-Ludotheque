@@ -30,7 +30,7 @@
                 <input href="choixEditeur" type="button" onclick='window.location.reload(false)' value="Rechercher"/>
             </div>
 
-            <a href="choixEditeur" class="btn btn-primary">couc</a>
+            <a href="choixEditeur" class="btn btn-primary">coucou</a>
 
             <br>
 
