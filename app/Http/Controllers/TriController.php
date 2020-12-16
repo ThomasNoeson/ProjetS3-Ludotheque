@@ -6,6 +6,7 @@ class TriController extends Controller
 {
     public function tri ()
     {
-        $table = jeux::orderBy('nom')->get();
+        $jeux = Jeu::all()->sortBy('nom');
+        return view('jeu.index', ['jeux' => $jeux]);
     }
 }
