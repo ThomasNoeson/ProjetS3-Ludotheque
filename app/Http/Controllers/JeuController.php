@@ -5,111 +5,114 @@ namespace App\Http\Controllers;
 use App\Models\Editeur;
 use App\Models\Jeu;
 use App\Models\Theme;
-use App\Models\User;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Redirect;
 
 class JeuController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * List All Jeu
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\View\View
      */
-    public function index()
+    public function index($sort = null)
     {
-        $jeux = Jeu::all();
-        return view('jeu.index', ['jeux' => $jeux]);
+        $filter = null;
+        if($sort !== null){
+            if($sort){
+                $jeux = Jeu::all()->sortBy('nom');
+            } else{
+                $jeux = Jeu::all()->sortByDesc('nom');
+            }
+            $sort = !$sort;
+            $filter = true;
+        } else{
+            $jeux = Jeu::all();
+            $sort = true;
+        }
+        Log::info(url($jeux[0]->url_media));
+        return view('jeu.index', ['jeux' => $jeux, 'sort' => intval($sort), 'filter' => $filter]);
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Show Jeu.
      *
-     * @return \Illuminate\Http\Response
+     * @param int $id
+     * @return \Illuminate\View\View
+     */
+    public function show($id)
+    {
+        $jeux = Jeu::all();
+
+        $jeu = $jeux->find($id);
+
+        return view('jeu.show', ['jeu' => $jeu]);
+    }
+
+    /**
+     * Show rules .
+     *
+     * @param int $id
+     * @return \Illuminate\View\View
+     */
+    public function rules($id)
+    {
+        $jeux = Jeu::all();
+
+        $jeu = $jeux->find($id);
+
+        return view('jeu.rules', ['jeu' => $jeu]);
+    }
+
+    /**
+     * Show the form to create a new jeu.
+     *
+     * @return Response
      */
     public function create()
     {
-        $editeur = Editeur::all();
-        $theme = Theme::all();
-        return view('jeu.create', ['editeurs'=>$editeur, 'themes' => $theme]);
+        return view('jeu.create');
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a new Jeu.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return Response
      */
     public function store(Request $request)
     {
 
+        $request->validate(
+            [
+                'nom' => 'required|unique:jeux',
+                'description' => 'required',
+                'theme' => 'required',
+                'editeur' => 'required',
+            ],
+            [
+                'nom.required' => 'Le nom est requis',
+                'nom.unique' => 'Le nom doit être unique',
+                'description.required' => 'La description est requise',
+                'theme.required' => 'Le théme est requis',
+                'editeur.required' => 'L\'editeur est requis',
+            ]
+        );
 
-        $jeu = new Jeu;
-        $editeur = Editeur::all();
-
+        $jeu = new Jeu();
         $jeu->nom = $request->nom;
         $jeu->description = $request->description;
-        $jeu->regles = $request->regles;
-        $jeu->langue = $request->langages;
-        $jeu->url_media = $request->urlmedia;
-        $jeu->age = $request->age;
-        $jeu->nombre_joueurs = $request->nombrejoueurs;
-        $jeu->categorie = $request->categorie;
-        $jeu->duree = $request->duree;
-        $jeu->user_id = Auth::id();
         $jeu->theme_id = $request->theme;
-        foreach ($editeur as $e)
-            if ($e->nom == $request->editeur)
-                $jeu->editeur_id = $e->id;
+        $jeu->user_id = Auth::user()->id;
+        $jeu->editeur_id = $request->editeur;
+        $jeu->url_media = 'https://picsum.photos/seed/'.$jeu->nom.'/200/200';
 
         $jeu->save();
 
-        return redirect('/jeux');
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        $nomJeu = Jeu::find($id);
-        return view('jeu.show', ['marathon' => $nomJeu]);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        return Redirect::route('jeu_index');
     }
 }

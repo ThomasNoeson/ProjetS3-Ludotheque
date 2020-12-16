@@ -6,14 +6,25 @@ use Illuminate\Http\Request;
 
 class AccueilController extends Controller
 {
-    public function aleatoire(){
-        $bdd=Jeu::all;
-        $liste = array();
-        for ($i =0;i<5;$i++) {
-            $x = rand(1, 50);
-            $recup = $bdd->query("SELECT nom,description FROM jeu WHERE id=$x");
-            array_push($liste,$recup);
+    function cinqAleatoires() {
+        $jeu_ids = Jeu::all()->pluck('id');
+        $faker = \Faker\Factory::create();
+        $ids = $faker->randomElements($jeu_ids->toArray(), 5);
+        $jeux = [];
+        foreach ($ids as $id) {
+            $jeux[] = Jeu::find($id);
         }
-        echo($liste);
+        return view('marathon_accueil', ['jeux' => $jeux]);
+    }
+
+    /**
+     * home Page
+     *
+     * @return \Illuminate\View\View
+     */
+    public function index() {
+        $users = User::all();
+
+        return view('home.index', ['users' => $users]);
     }
 }
