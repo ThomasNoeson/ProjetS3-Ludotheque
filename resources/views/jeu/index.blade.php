@@ -9,9 +9,12 @@
 <body>
 <ul>
 @foreach($jeux as $j)
-
         <li>{{$j->nom}}</li>
-</ul>
+        <a href="{{route('jeux.show',[$j->id])}}"
+           class="bg-blue-400 cursor-pointer rounded p-1 mx-1 text-white">
+            Plus d'infos
+        </a>
 @endforeach
+</ul>
 </body>
 </html>
