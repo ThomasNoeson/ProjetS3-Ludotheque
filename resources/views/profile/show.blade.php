@@ -7,6 +7,20 @@
 
     <div>
         <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
+            <div>
+                <h1>Mes jeux: </h1>
+                <br>
+                @foreach(\App\Models\Achat::all() as $a)
+                    @if($a->user_id == \Illuminate\Support\Facades\Auth::user()->id)
+                        <ul>
+                            <li>Jeu: {{\App\Models\Jeu::find($a->jeu_id)->nom}}</li>
+                            <li>Prix: {{$a->prix}}</li>
+                            <li>Date d'achat: {{ (new DateTime($a->date_achat))->format("%D-%M-%Y")}}</li>
+                        </ul>
+                        <br>
+                    @endif
+                @endforeach
+            </div>
             @if (Laravel\Fortify\Features::canUpdateProfileInformation())
                 @livewire('profile.update-profile-information-form')
 
