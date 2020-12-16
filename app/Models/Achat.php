@@ -9,5 +9,7 @@ class Achat extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
+
     protected $fillable = ['jeu_id', 'user_id', 'date_achat', 'lieu', 'prix'];
 }

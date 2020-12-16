@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Achat;
 use App\Models\Commentaire;
 use App\Models\Editeur;
 use App\Models\Jeu;
@@ -13,6 +14,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\URL;
 
 class JeuController extends Controller
 {
@@ -117,6 +119,23 @@ class JeuController extends Controller
         $jeu->url_media = 'https://picsum.photos/seed/'.$jeu->nom.'/200/200';
 
         $jeu->save();
+
+        return Redirect::route('jeu_index');
+    }
+
+    public function ajout(Request $request) {
+        //Ajout d'un jeu dans la table achat
+        $achat = new Achat();
+        $jeux = Jeu::all();
+
+        //$jeux->id->where($request -> jeu, $jeux->nom)
+        $achat->jeu_id = $request->jeu;
+        $achat->user_id = Auth::user()->id;
+        $achat->date_achat = new \DateTime();
+        $achat->lieu = $request -> lieu;
+        $achat->prix = $request -> prix;
+
+        $achat->save();
 
         return Redirect::route('jeu_index');
     }

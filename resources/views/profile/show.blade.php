@@ -7,6 +7,32 @@
 
     <div>
         <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
+            <h1>Formulaire d'ajout:</h1>
+            <form name="form-create-jeu" method="post" action="{{ URL::route('ajout') }}">
+                @csrf
+                <div class="form-group">
+                    <label for="description">Jeu</label>
+                    <select name="jeu" id="jeu">
+                        @foreach( \App\Models\Jeu::all() as $j)
+                                <option value="{{$j -> id}}">{{ $j->nom }}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <br>
+                <div class="form-group">
+                    <label for="nom">Prix</label>
+                    <input type="text" id="prix" name="prix" value="{{ old('prix') }}" class="form-control" required="">
+                </div>
+                <br>
+                <br>
+                <div class="form-group">
+                    <label for="nom">Lieu</label>
+                    <input type="text" id="lieu" name="lieu" value="{{ old('lieu') }}" class="form-control" required="">
+                </div>
+                <br>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+            <br>
             <div>
                 <h1>Mes jeux: </h1>
                 <br>
