@@ -29,7 +29,8 @@ class JeuController extends Controller
      */
     public function create()
     {
-        return view('jeu.create');
+        $editeur = Editeur::all();
+        return view('jeu.create', ['editeurs'=>$editeur]);
     }
 
     /**
@@ -41,7 +42,9 @@ class JeuController extends Controller
     public function store(Request $request)
     {
 
+
         $jeu = new Jeu;
+        $editeur = Editeur::all();
 
         $jeu->nom = $request->nom;
         $jeu->description = $request->description;
@@ -54,7 +57,9 @@ class JeuController extends Controller
         $jeu->duree = $request->duree;
         $jeu->user_id = Auth::id();
         $jeu->theme_id = $request->theme;
-        $jeu->editeur_id = $request->editeur;
+        foreach ($editeur as $e)
+            if ($e->nom == $request->editeur)
+                $jeu->editeur_id = $e->id;
 
         $jeu->save();
 

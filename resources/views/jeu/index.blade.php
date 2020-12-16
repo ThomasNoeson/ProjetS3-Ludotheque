@@ -7,14 +7,14 @@
     <script src="script.js"></script>
 </head>
 <body>
-<ul>
 @foreach($jeux as $j)
+    <ul>
         <li>{{$j->nom}}</li>
         <a href="{{route('jeux.show',[$j->id])}}"
            class="bg-blue-400 cursor-pointer rounded p-1 mx-1 text-white">
             Plus d'infos
         </a>
+    </ul>
 @endforeach
-</ul>
 </body>
 </html>

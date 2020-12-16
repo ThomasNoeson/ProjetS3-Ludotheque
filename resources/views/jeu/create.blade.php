@@ -38,8 +38,9 @@
         <label>Éditeur</label>
         <select id="editeur" class="form-control">
             <option selected>Choisir...</option>
-            <option>values</option>
-            <option>values</option>
+            @foreach($editeurs as $e)
+                <option>{{$e->nom}}</option>
+            @endforeach
         </select>
     </div>
     <div>
