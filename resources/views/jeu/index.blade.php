@@ -7,16 +7,11 @@
     <script src="script.js"></script>
 </head>
 <body>
+<a href="{{route('jeux.create')}}"
+   class="bg-blue-400 cursor-pointer rounded p-1 mx-1 text-white">
+    Ajouter un jeu
+</a>
 @foreach($jeux as $j)
-<<<<<<< HEAD
-    <ul>
-        <li>{{$j->nom}}</li>
-        <a href="{{route('jeux.show',[$j->id])}}"
-           class="bg-blue-400 cursor-pointer rounded p-1 mx-1 text-white">
-            Plus d'infos
-        </a>
-    </ul>
-=======
         <ul>
             <li>{{$j->id}}</li>
             <li>{{$j->nom}}</li>
@@ -29,7 +24,6 @@
             Plus d'infos
             </a>
         </ul>
->>>>>>> 7213f8481ed0c494ecc665b3eb340128dfb33476
 @endforeach
 </body>
 </html>
