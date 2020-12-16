@@ -14,7 +14,6 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Redirect;
-use Illuminate\Support\Facades\URL;
 
 class JeuController extends Controller
 {
@@ -48,6 +47,7 @@ class JeuController extends Controller
      * @param int $id
      * @return \Illuminate\View\View
      */
+
     public function show($id)
     {
         $jeux = Jeu::all();
@@ -56,8 +56,18 @@ class JeuController extends Controller
 
         $jeu = $jeux->find($id);
 
+        $PrixMoyen = $this->PrixMoyen($id);
 
-        return view('jeu.show', ['jeu' => $jeu, 'coms' => $com, 'users' => $user]);
+        $PrixHaut = $this->PrixHaut($id);
+
+        $PrixBas = $this->PrixBas($id);
+
+        $NbUtilisateur = $this->NbUtilisateur();
+
+        $UtilisateurAchete = $this->UtilisateurAchete($id);
+
+
+        return view('jeu.show', ['jeu' => $jeu, 'coms' => $com, 'users' => $user, 'PrixMoyen' => $PrixMoyen, 'PrixHaut' => $PrixHaut, 'PrixBas' => $PrixBas, 'NbUtilisateur' => $NbUtilisateur, 'UtilisateurAchete' => $UtilisateurAchete]);
     }
 
     /**
@@ -123,20 +133,66 @@ class JeuController extends Controller
         return Redirect::route('jeu_index');
     }
 
-    public function ajout(Request $request) {
-        //Ajout d'un jeu dans la table achat
-        $achat = new Achat();
-        $jeux = Jeu::all();
+    function PrixMoyen($id_jeu)
+    {
+        $AchatTotal = Achat::all();
+        $total = 0;
+        $count = 0;
+        foreach ($AchatTotal as $i) {
+            if ($i["jeu_id"] == $id_jeu) {
+                $total += $i["prix"];
+                $count += 1;
+            }
 
-        //$jeux->id->where($request -> jeu, $jeux->nom)
-        $achat->jeu_id = $request->jeu;
-        $achat->user_id = Auth::user()->id;
-        $achat->date_achat = new \DateTime();
-        $achat->lieu = $request -> lieu;
-        $achat->prix = $request -> prix;
+        }
+        return ($total/$count);
+    }
 
-        $achat->save();
+    function PrixHaut($id_jeu){
+        $AchatTotal = Achat::all();
+        $PlusHaut = 0;
+        foreach($AchatTotal as $i){
+            if ($i["jeu_id"] == $id_jeu) {
+                $total = $i["prix"];
+                if ($total > $PlusHaut){
+                    $PlusHaut = $total;
+                }
+            }
+        }
+        return $PlusHaut;
+    }
 
-        return Redirect::route('jeu_index');
+    function PrixBas($id_jeu){
+        $AchatTotal = Achat::all();
+        $PlusBas = 500000000;
+        foreach($AchatTotal as $i){
+            if ($i["jeu_id"] == $id_jeu) {
+                $total = $i["prix"];
+                if ($total < $PlusBas){
+                    $PlusBas = $total;
+                }
+            }
+        }
+        return $PlusBas;
+    }
+
+    function NbUtilisateur(){
+        $User = User::all();
+        $count = 0;
+        foreach($User as $i){
+            $count += 1;
+        }
+        return $count;
+    }
+
+    function UtilisateurAchete($id_jeu){
+        $AchatTotal = Achat::all();
+        $count = 0;
+        foreach($AchatTotal as $i){
+            if ($i["jeu_id"] == $id_jeu){
+                $count += 1;
+            }
+        }
+        return ($count);
     }
 }
