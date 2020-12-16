@@ -18,11 +18,19 @@
     </div>
     <div>
         <label>Thème</label>
-        <input type="text" class="form-control" id="theme">
+        <select id="theme" class="form-control">
+            <option selected>Choisir...</option>
+            <option>VALUES</option>
+            <option>VALUES</option>
+        </select>
     </div>
     <div>
         <label>Éditeur</label>
-        <input type="text" class="form-control" id="editeur">
+        <select id="editeur" class="form-control">
+            <option selected>Choisir...</option>
+            <option>values</option>
+            <option>values</option>
+        </select>
     </div>
     <div>
         <label>Règles</label>
