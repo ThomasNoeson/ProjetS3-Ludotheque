@@ -35,6 +35,7 @@ class JeuController extends Controller
             $sort = true;
 
         }
+        return view('jeu.index', ['jeux' => $jeux, 'sort' => intval($sort), 'filter' => $filter]);
     }
 
     /**
