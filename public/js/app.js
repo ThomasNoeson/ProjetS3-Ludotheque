@@ -39259,8 +39259,13 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
+<<<<<<< HEAD
 __webpack_require__(/*! /home/belval/Documents/CoursSemestre3/Marathon/ludotheque/resources/js/app.js */"./resources/js/app.js");
 module.exports = __webpack_require__(/*! /home/belval/Documents/CoursSemestre3/Marathon/ludotheque/resources/css/app.css */"./resources/css/app.css");
+=======
+__webpack_require__(/*! /Users/thomas.noeson/Desktop/ludotheque/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Users/thomas.noeson/Desktop/ludotheque/resources/sass/app.scss */"./resources/sass/app.scss");
+>>>>>>> fix-12
 
 
 /***/ })
