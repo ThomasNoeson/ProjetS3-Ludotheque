@@ -29,3 +29,5 @@ Route::get('/formulaire', function () {
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
+
+Route::resource('jeux', '\App\Http\Controllers\JeuController');

@@ -20,7 +20,7 @@
                 <time datetime="2020-12-16T08:15:00">mercredi 16 décembre 2020 à 8h15</time>
                 par une présentation du sujet et se termine le
                 <time datetime="2020-12-17T18:30:00">jeudi 17 décembre 2020 à 18h30</time>
-                .
+
                 Le vendredi 18 décembre après midi (13h00 - 17h) est consacré à la présentation des projets.
 
                 Vous devez utiliser le framework PHP Laravel.
