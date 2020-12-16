@@ -50,6 +50,7 @@
                     <li>Auteur: {{$users->find($c->user_id)->name}}</li>
                     <li>Commentaire: {{$c->commentaire}}</li>
                     <li>Note: {{$c->note}}</li>
+                    <li>{{(date_diff(new \DateTime(), new DateTime($c->date_com)))->format("Il y a %D jour(s), %M mois, %Y an(s)")}} </li>
                 </ul>
                 <br>
             @endif
