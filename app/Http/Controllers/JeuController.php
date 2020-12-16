@@ -137,14 +137,15 @@ class JeuController extends Controller
     {
         $AchatTotal = Achat::all();
         $total = 0;
-
+        $count = 0;
         foreach ($AchatTotal as $i) {
             if ($i["jeu_id"] == $id_jeu) {
                 $total += $i["prix"];
+                $count += 1;
             }
 
         }
-        return $total;
+        return ($total/$count);
     }
 
     function PrixHaut($id_jeu){
