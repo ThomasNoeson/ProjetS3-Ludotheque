@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Achat;
 use App\Models\Commentaire;
 use App\Models\Editeur;
 use App\Models\Jeu;
@@ -46,6 +47,7 @@ class JeuController extends Controller
      * @param int $id
      * @return \Illuminate\View\View
      */
+
     public function show($id)
     {
         $jeux = Jeu::all();
@@ -54,8 +56,18 @@ class JeuController extends Controller
 
         $jeu = $jeux->find($id);
 
+        $PrixMoyen = $this->PrixMoyen($id);
 
-        return view('jeu.show', ['jeu' => $jeu, 'coms' => $com, 'users' => $user]);
+        $PrixHaut = $this->PrixHaut($id);
+
+        $PrixBas = $this->PrixBas($id);
+
+        $NbUtilisateur = $this->NbUtilisateur();
+
+        $UtilisateurAchete = $this->UtilisateurAchete($id);
+
+
+        return view('jeu.show', ['jeu' => $jeu, 'coms' => $com, 'users' => $user, 'PrixMoyen' => $PrixMoyen, 'PrixHaut' => $PrixHaut, 'PrixBas' => $PrixBas, 'NbUtilisateur' => $NbUtilisateur, 'UtilisateurAchete' => $UtilisateurAchete]);
     }
 
     /**
@@ -119,5 +131,67 @@ class JeuController extends Controller
         $jeu->save();
 
         return Redirect::route('jeu_index');
+    }
+
+    function PrixMoyen($id_jeu)
+    {
+        $AchatTotal = Achat::all();
+        $total = 0;
+
+        foreach ($AchatTotal as $i) {
+            if ($i["jeu_id"] == $id_jeu) {
+                $total += $i["prix"];
+            }
+
+        }
+        return $total;
+    }
+
+    function PrixHaut($id_jeu){
+        $AchatTotal = Achat::all();
+        $PlusHaut = 0;
+        foreach($AchatTotal as $i){
+            if ($i["jeu_id"] == $id_jeu) {
+                $total = $i["prix"];
+                if ($total > $PlusHaut){
+                    $PlusHaut = $total;
+                }
+            }
+        }
+        return $PlusHaut;
+    }
+
+    function PrixBas($id_jeu){
+        $AchatTotal = Achat::all();
+        $PlusBas = 500000000;
+        foreach($AchatTotal as $i){
+            if ($i["jeu_id"] == $id_jeu) {
+                $total = $i["prix"];
+                if ($total < $PlusBas){
+                    $PlusBas = $total;
+                }
+            }
+        }
+        return $PlusBas;
+    }
+
+    function NbUtilisateur(){
+        $User = User::all();
+        $count = 0;
+        foreach($User as $i){
+            $count += 1;
+        }
+        return $count;
+    }
+
+    function UtilisateurAchete($id_jeu){
+        $AchatTotal = Achat::all();
+        $count = 0;
+        foreach($AchatTotal as $i){
+            if ($i["jeu_id"] == $id_jeu){
+                $count += 1;
+            }
+        }
+        return ($count);
     }
 }

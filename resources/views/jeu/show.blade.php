@@ -37,11 +37,27 @@
                         Nombre de joueur : {{ $jeu->nombre_joueurs }}
                     </p>
                     <hr><hr>
+                    <br>
+                    Informations supplémentaires sur le tarif:
+                    <hr>
+                    Prix moyen du jeu : {{$PrixMoyen}}
+                    <hr>
+                    Prix le plus haut : {{$PrixHaut}}
+                    <hr>
+                    Prix le plus bas : {{$PrixBas}}
+                    <hr>
+                    Nombre d'utilisateur qui possèdent ce jeu : {{$UtilisateurAchete}}
+                    <hr>
+                    Le nombre total d'utilisateurs du site : {{$NbUtilisateur}}
+                    <hr>
+                    <br>
+
                         <a href="{{ URL::route('jeu_rules', $jeu->id) }}" class="btn btn-primary">Regarder les régles du jeu</a>
                     <hr><hr>
                 </div>
             </div>
         </div>
+        <br>
         <h1>Commentaires:</h1>
         <br>
         @foreach ( $coms as $c)

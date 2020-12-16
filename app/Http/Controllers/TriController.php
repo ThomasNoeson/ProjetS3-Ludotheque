@@ -8,4 +8,6 @@ class TriController extends Controller
     {
         $table = jeux::orderBy('nom')->get();
     }
+
+
 }
