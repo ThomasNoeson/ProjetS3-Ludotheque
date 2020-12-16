@@ -30,15 +30,11 @@ class JeuController extends Controller
             }
             $sort = !$sort;
             $filter = true;
-        } else{
+        } else {
             $jeux = Jeu::all();
             $sort = true;
+
         }
-<<<<<<< HEAD
-=======
-        Log::info(url($jeux[0]->url_media));
->>>>>>> 2c3d3ff72b99ad53040771cbad18970b57d17df5
-        return view('jeu.index', ['jeux' => $jeux, 'sort' => intval($sort), 'filter' => $filter]);
     }
 
     /**
