@@ -21,6 +21,13 @@ Route::get('/jeux', function () {
     return view('jeux.index');
 });
 
+Route::get('/Q16', function () {
+    return view('jeu.Q16');
+});
+
+Route::get('/Q19', function () {
+    return view('jeu.Q19');
+});
 
 Route::get('/enonce', function () {
     return view('enonce.index');
