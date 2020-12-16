@@ -30,7 +30,8 @@ class JeuController extends Controller
     public function create()
     {
         $editeur = Editeur::all();
-        return view('jeu.create', ['editeurs'=>$editeur]);
+        $theme = Theme::all();
+        return view('jeu.create', ['editeurs'=>$editeur, 'themes' => $theme]);
     }
 
     /**

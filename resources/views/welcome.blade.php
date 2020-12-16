@@ -35,11 +35,9 @@
                     @endauth
                 </div>
             @endif
-            <?php
-            @if (Auth ==check()){
-                <button type="submit" id="bouton" onclick="aleatoire()">Choix de 5 jeux aléatoires</button>
-            }
-                ?>
+            @if (Auth::check())
+                <button type="submit" id="bouton" onclick="{{route(tri)}}">Choix de 5 jeux aléatoires</button>
+            @endif
         </div>
     </body>
 </html>

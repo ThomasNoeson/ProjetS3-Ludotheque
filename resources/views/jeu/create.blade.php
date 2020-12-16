@@ -1,38 +1,29 @@
-{{--
-   messages d'erreurs dans la saisie du formulaire.
---}}
+<html>
+<head>
+    <title>Formulaire - Marathon du Web 2020 - IUT de Lens</title>
+    <meta charset="utf-8">
+    <meta name="formulaire" content="Formulaire d'ajout d'un jeu">
+    <link rel="stylesheet" href="{{url('style.css')}}">
+</head>
 
-
-@if ($errors->any())
-    <div>
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
-{{--
-     formulaire de saisie d'une tâche
-     la fonction 'route' utilise un nom de route
-     'csrf_field' ajoute un champ caché qui permet de vérifier
-       que le formulaire vient du serveur.
-  --}}
-
-<form action="{{route('jeux.store')}}" method="POST">
-    {!! csrf_field() !!}
+<body>
     <h1 class="blanc">Formulaire d'ajout d'un jeu</h1>
     <div>
         <label>Nom</label>
-        <input type="text" class="form-control" id="nom" name="nom">
+        <input type="text" class="form-control" id="nom">
     </div>
     <div>
         <label>Description</label>
-        <input type="text" class="form-control" id="description" name="description">
+        <input type="text" class="form-control" id="description">
     </div>
     <div>
         <label>Thème</label>
-        <input type="text" class="form-control" id="theme">
+        <select id="theme" class="form-control">
+            <option selected>Choisir...</option>
+            @foreach($themes as $t)
+                <option>{{$t->nom}}</option>
+            @endforeach
+        </select>
     </div>
     <div>
         <label>Éditeur</label>
@@ -71,13 +62,6 @@
         <label>Duree</label>
         <input type="text" class="form-control" id="duree">
     </div>
-    <div>
-        <label>User_id</label>
-        <input type="text" class="form-control" id="user">
-    </div>
-    <div>
-        <button class="btn btn-success" type="submit">Valide</button>
-    </div>
-</form>
 
-
+    <button type="submit" id="bouton">Ajoutez le jeu</button>
+</body>
