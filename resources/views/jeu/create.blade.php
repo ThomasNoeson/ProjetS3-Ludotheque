@@ -36,7 +36,11 @@
     </div>
     <div>
         <label>Éditeur</label>
-        <input type="text" class="form-control" id="editeur">
+        <select id="editeur" class="form-control">
+            <option selected>Choisir...</option>
+            <option>values</option>
+            <option>values</option>
+        </select>
     </div>
     <div>
         <label>Règles</label>

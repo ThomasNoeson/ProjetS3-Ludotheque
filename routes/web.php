@@ -30,10 +30,5 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
 
-<<<<<<< HEAD
 Route::resource('jeux', '\App\Http\Controllers\JeuController');
-=======
-Route::get('/jeux/{jeux}', function () {
-    return view('jeux.show');
-});
->>>>>>> fix-question-16
+
