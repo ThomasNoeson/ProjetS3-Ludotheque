@@ -28,9 +28,41 @@
             </div>
             <div class="form-group">
                 <label for="description">Description</label>
-                <textarea name="description" class="form-control" required="">
-                    {{ old('description') }}
-                </textarea>
+                <div>
+                    <textarea name="description" class="form-control" required="">{{ old('description') }}</textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="regles">Règles</label>
+                <div>
+                    <textarea name="regles" class="form-control" required="">{{ old('regles') }}</textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="langue">Langue</label>
+                <input type="text" id="langue" name="langue" value="{{ old('langue') }}" class="form-control" required="">
+            </div>
+            <div class="form-group">
+                <label>Ajouter une image</label>
+                <div>
+                    <input type="file" id="file" name="file" value="{{ old('file') }}" class="custom-file-input form-control">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="age">Age</label>
+                <input type="int" id="age" name="age" value="{{ old('age') }}" class="form-control" required="">
+            </div>
+            <div class="form-group">
+                <label for="nombrejoueurs">Nombre de joueurs</label>
+                <input type="int" id="nombrejoueurs" name="nombrejoueurs" value="{{ old('nombrejoueurs') }}" class="form-control" required="">
+            </div>
+            <div class="form-group">
+                <label for="categorie">Catégorie</label>
+                <input type="text" id="categorie" name="categorie" value="{{ old('categorie') }}" class="form-control" required="">
+            </div>
+            <div class="form-group">
+                <label for="duree">Durée</label>
+                <input type="string" id="duree" name="duree" value="{{ old('nombrejoueurs') }}" class="form-control" required="">
             </div>
             <div class="form-group">
                 <label for="description">Theme</label>
