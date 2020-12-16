@@ -50,11 +50,20 @@ class JeuController extends Controller
 
     public function show($id)
     {
+        $nbCom = 0;
         $jeux = Jeu::all();
         $com = Commentaire::all();
         $user = User::all();
 
         $jeu = $jeux->find($id);
+        $notemax = $com->max('note'); //note la plus haute du jeu
+        $notemin = $com->min('note'); //note la plus basse
+        foreach ($com as $c) { //nombre de com du jeu
+            if ($c->jeu_id == $id)
+            $nbCom = $nbCom + 1;
+        }
+        $nbTot = $com->count(); // nombre total de coms
+        $moy = $this->moynote($id); //moyenne des notes du jeu
 
         $PrixMoyen = $this->PrixMoyen($id);
 
@@ -67,7 +76,10 @@ class JeuController extends Controller
         $UtilisateurAchete = $this->UtilisateurAchete($id);
 
 
-        return view('jeu.show', ['jeu' => $jeu, 'coms' => $com, 'users' => $user, 'PrixMoyen' => $PrixMoyen, 'PrixHaut' => $PrixHaut, 'PrixBas' => $PrixBas, 'NbUtilisateur' => $NbUtilisateur, 'UtilisateurAchete' => $UtilisateurAchete]);
+
+        return view('jeu.show', ['max' => $notemax, 'min' => $notemin, 'nbCom' => $nbCom, 'nbTot' => $nbTot, 'moy' => $moy, 'jeu' => $jeu, 'coms' => $com, 'users' => $user, 'PrixMoyen' => $PrixMoyen, 'PrixHaut' => $PrixHaut, 'PrixBas' => $PrixBas, 'NbUtilisateur' => $NbUtilisateur, 'UtilisateurAchete' => $UtilisateurAchete]);
+
+
     }
 
     /**
@@ -132,6 +144,17 @@ class JeuController extends Controller
 
         return Redirect::route('jeu_index');
     }
+/*
+    public function avis(Request $request) {
+        $com = new Commentaire();
+        $com->commentaire = $request->commentaire;
+        $com->date = new \DateTime();
+        $note = ?;
+        $jeu_id = ?;
+        $user_id = Auth::user()->id;
+        $com->save();
+    }
+*/
 
     function PrixMoyen($id_jeu)
     {
@@ -198,6 +221,12 @@ class JeuController extends Controller
             }
         }
         return ($count);
+        $achat->save();
+        return Redirect::route('jeu_index');
+    }
+
+    public function supprimer() {
+
     }
 
     public function ajout(Request $request)
@@ -215,4 +244,19 @@ class JeuController extends Controller
         return Redirect::route('jeu_index');
 
     }
+
+
+    public function moynote($id) {
+        $com = Commentaire::all();
+        $total = 0;
+        $count = 0;
+        foreach ($com as $c) {
+            if ($c->jeu_id == $id){
+                $total = $total + $c->note;
+                $count = $count + 1;
+            }
+        }
+        return $total/$count;
+    }
+
 }

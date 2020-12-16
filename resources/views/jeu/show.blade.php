@@ -35,6 +35,16 @@
                         durée : {{ $jeu->duree }}
                     <hr>
                         Nombre de joueur : {{ $jeu->nombre_joueurs }}
+                    <hr>
+                        Note max : {{ $max }}
+                    <hr>
+                        Note min : {{ $min }}
+                    <hr>
+                        Nombre de commentaire du jeu: {{ $nbCom }}
+                    <hr>
+                        Nombre total de commentaire: {{ $nbTot }}
+                    <hr>
+                        Moyenne du jeu: {{ $moy }}
                     </p>
                     <hr><hr>
                     <br>

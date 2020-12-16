@@ -11,7 +11,7 @@ class Commentaire extends Model
 
     public $timestamps = false;
 
-    protected $fillable = ['commentaire', 'date_com', 'note'];
+    protected $fillable = ['commentaire', 'date_com', 'note', 'jeu_id'];
 
     function jeu() {
         return $this->belongsTo(Jeu::class);
