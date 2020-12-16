@@ -17,11 +17,22 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/jeux', function () {
+    return view('jeux.index');
+});
+
 
 Route::get('/enonce', function () {
     return view('enonce.index');
 });
 
+Route::get('/formulaire', function () {
+    return view('formulaire.create');
+});
+
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
+
+Route::resource('jeux', '\App\Http\Controllers\JeuController');
+

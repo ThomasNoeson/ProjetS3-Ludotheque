@@ -13,6 +13,10 @@ class Jeu extends Model {
 
     protected $fillable = ['nom', 'description', 'regles', 'langue',
         'url_media', 'age', 'nombre_joueurs', 'categorie', 'duree'];
+    /**
+     * @var mixed
+     */
+    private $regles;
 
     function createur() {
         return $this->belongsTo(User::class);
