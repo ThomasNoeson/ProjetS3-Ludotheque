@@ -34,6 +34,8 @@ Route::post('/jeux/create', [JeuController::class, 'store'])->name('jeu_store')-
 
 Route::get('/jeux/{sort?}', [JeuController::class, 'index'])->name('jeu_index');
 
+Route::get('/jeux/sort/{nom_editeur}', [JeuController::class, 'index'])->name('jeu_index');
+
 Route::get('/enonce', function () {
     return view('enonce.index');
 });

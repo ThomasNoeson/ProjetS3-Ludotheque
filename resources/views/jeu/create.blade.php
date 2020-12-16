@@ -5,9 +5,7 @@
 @section('content')
 
 <div class="card">
-    <div class="card-header text-center font-weight-bold">
-        Ajouter un nouveau jeu
-    </div>
+    <div class="card-header text-center font-weight-bold">Ajouter un nouveau jeu</div>
 
     @if ($errors->any())
     <div class="alert alert-danger">
@@ -19,7 +17,7 @@
     </div>
     @endif
 
-    <div class="card-body">
+    <div style="margin-left: 2%;" class="card-body">
         <form name="form-create-jeu" method="post" action="{{ URL::route('jeu_store') }}">
             @csrf
             <div class="form-group">
