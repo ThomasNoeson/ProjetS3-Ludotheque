@@ -42,6 +42,18 @@
                 </div>
             </div>
         </div>
+        <h1>Commentaires:</h1>
+        <br>
+        @foreach ( $coms as $c)
+            @if ($jeu->id == $c->jeu_id)
+                <ul>
+                    <li>Auteur: {{$users->find($c->user_id)->name}}</li>
+                    <li>Commentaire: {{$c->commentaire}}</li>
+                    <li>Note: {{$c->note}}</li>
+                </ul>
+                <br>
+            @endif
+        @endforeach
     </div>
     <a href="{{ URL::route('jeu_index') }}" class="btn btn-secondary">Retour à la liste des jeux</a>
 @endsection

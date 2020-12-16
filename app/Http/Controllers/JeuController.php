@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Commentaire;
 use App\Models\Editeur;
 use App\Models\Jeu;
 use App\Models\Theme;
+use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -47,10 +49,13 @@ class JeuController extends Controller
     public function show($id)
     {
         $jeux = Jeu::all();
+        $com = Commentaire::all();
+        $user = User::all();
 
         $jeu = $jeux->find($id);
 
-        return view('jeu.show', ['jeu' => $jeu]);
+
+        return view('jeu.show', ['jeu' => $jeu, 'coms' => $com, 'users' => $user]);
     }
 
     /**
