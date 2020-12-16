@@ -15,34 +15,22 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('home');
 
-Route::get('/jeux', function () {
-    return view('jeux.index');
-});
+Route::middleware(['auth'])->get('/dashboard', [HomeController::class, 'cinqAleatoires'])->name('dashboard');
 
-Route::get('/Q16', function () {
-    return view('jeu.Q16');
-});
+//Route::get('/', [HomeController::class, 'index'])->name('home');
 
-Route::get('/Q19', function () {
-    return view('jeu.Q19');
-});
+Route::get('/jeux/show/{id}', [JeuController::class, 'show'])->name('jeu_show');
+
+Route::get('/jeux/rules/{id}', [JeuController::class, 'rules'])->name('jeu_rules');
+
+Route::get('/jeux/create', [JeuController::class, 'create'])->name('jeu_create');
+
+Route::post('/jeux/create', [JeuController::class, 'store'])->name('jeu_store')->middleware('auth');
+
+Route::get('/jeux/{sort?}', [JeuController::class, 'index'])->name('jeu_index');
 
 Route::get('/enonce', function () {
     return view('enonce.index');
 });
-
-Route::get('/formulaire', function () {
-    return view('formulaire.create');
-});
-
-Route::get('/trierjeu', function () {
-    return view('trierjeu.tri');
-});
-
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
-
-Route::resource('jeux', '\App\Http\Controllers\JeuController');
