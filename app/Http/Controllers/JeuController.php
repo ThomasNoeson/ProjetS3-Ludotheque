@@ -25,10 +25,10 @@ class JeuController extends Controller
     public function index($sort = null)
     {
         $filter = null;
-        if($sort !== null){
-            if($sort){
+        if ($sort !== null) {
+            if ($sort) {
                 $jeux = Jeu::all()->sortBy('nom');
-            } else{
+            } else {
                 $jeux = Jeu::all()->sortByDesc('nom');
             }
             $sort = !$sort;
@@ -126,7 +126,7 @@ class JeuController extends Controller
         $jeu->theme_id = $request->theme;
         $jeu->user_id = Auth::user()->id;
         $jeu->editeur_id = $request->editeur;
-        $jeu->url_media = 'https://picsum.photos/seed/'.$jeu->nom.'/200/200';
+        $jeu->url_media = 'https://picsum.photos/seed/' . $jeu->nom . '/200/200';
 
         $jeu->save();
 
@@ -145,16 +145,17 @@ class JeuController extends Controller
             }
 
         }
-        return ($total/$count);
+        return ($total / $count);
     }
 
-    function PrixHaut($id_jeu){
+    function PrixHaut($id_jeu)
+    {
         $AchatTotal = Achat::all();
         $PlusHaut = 0;
-        foreach($AchatTotal as $i){
+        foreach ($AchatTotal as $i) {
             if ($i["jeu_id"] == $id_jeu) {
                 $total = $i["prix"];
-                if ($total > $PlusHaut){
+                if ($total > $PlusHaut) {
                     $PlusHaut = $total;
                 }
             }
@@ -162,13 +163,14 @@ class JeuController extends Controller
         return $PlusHaut;
     }
 
-    function PrixBas($id_jeu){
+    function PrixBas($id_jeu)
+    {
         $AchatTotal = Achat::all();
         $PlusBas = 500000000;
-        foreach($AchatTotal as $i){
+        foreach ($AchatTotal as $i) {
             if ($i["jeu_id"] == $id_jeu) {
                 $total = $i["prix"];
-                if ($total < $PlusBas){
+                if ($total < $PlusBas) {
                     $PlusBas = $total;
                 }
             }
@@ -176,23 +178,41 @@ class JeuController extends Controller
         return $PlusBas;
     }
 
-    function NbUtilisateur(){
+    function NbUtilisateur()
+    {
         $User = User::all();
         $count = 0;
-        foreach($User as $i){
+        foreach ($User as $i) {
             $count += 1;
         }
         return $count;
     }
 
-    function UtilisateurAchete($id_jeu){
+    function UtilisateurAchete($id_jeu)
+    {
         $AchatTotal = Achat::all();
         $count = 0;
-        foreach($AchatTotal as $i){
-            if ($i["jeu_id"] == $id_jeu){
+        foreach ($AchatTotal as $i) {
+            if ($i["jeu_id"] == $id_jeu) {
                 $count += 1;
             }
         }
         return ($count);
+    }
+
+    public function ajout(Request $request)
+    {
+        //Ajout d'un jeu dans la table achat
+        $achat = new Achat();
+        $jeux = Jeu::all();
+        //$jeux->id->where($request -> jeu, $jeux->nom)
+        $achat->jeu_id = $request->jeu;
+        $achat->user_id = Auth::user()->id;
+        $achat->date_achat = new \DateTime();
+        $achat->lieu = $request->lieu;
+        $achat->prix = $request->prix;
+        $achat->save();
+        return Redirect::route('jeu_index');
+
     }
 }
