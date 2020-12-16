@@ -17,6 +17,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/jeux', function () {
+    return view('jeux.index');
+});
+
 
 Route::get('/enonce', function () {
     return view('enonce.index');
