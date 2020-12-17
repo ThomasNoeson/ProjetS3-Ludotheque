@@ -144,17 +144,18 @@ class JeuController extends Controller
         return Redirect::route('jeu_index');
     }
 
-    /*
         public function avis(Request $request) {
+        //Ajout d'un commentaire (pas fini)
             $com = new Commentaire();
-            $com->commentaire = $request->commentaire;
-            $com->date = new \DateTime();
-            $note = ?;
-            $jeu_id = ?;
-            $user_id = Auth::user()->id;
+            $com->commentaire = $request->com;
+            $com->date_com = new \DateTime();
+            $com->note = $request->note;
+            $com->jeu_id = 1;
+            $com->user_id = Auth::user()->id;
             $com->save();
+
+            return Redirect::route('jeu_index');
         }
-    */
 
     function PrixMoyen($id_jeu)
     {
