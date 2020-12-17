@@ -35,7 +35,7 @@ class JeuController extends Controller
             $sort = !$sort;
             $filter = true;
         } else {
-            $jeux = Jeu::all();
+            $jeux = Jeu::paginate(10);
             $sort = true;
 
         }
