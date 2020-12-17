@@ -259,7 +259,6 @@ class JeuController extends Controller
         return $total/$count;
     }
 
-
     public function tri ()
     {
         $jeux = Jeu::all()->sortBy('nom');
@@ -280,11 +279,7 @@ class JeuController extends Controller
                 echo($j["nom"]);
             }
         }
-
-    }
-
-    public function triediteur($nom_editeur){
-        $TriEditeur = $this->choixEditeur($nom_editeur);
+        $TriEditeur = TriEditeur($nom_editeur);
         return view('jeu.index', ['TriEditeur' => $TriEditeur]);
     }
 }
