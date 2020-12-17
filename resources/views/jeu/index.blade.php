@@ -97,11 +97,9 @@
         </div>
 
     </div>
-    <div class="row ">
-
-
+    <div class="row col-12">
         @foreach ($jeux as $jeu)
-            <div style="margin-left: 2%;" class="col-4" >
+            <div style="margin-left: 2%;" class="row col-4" >
                 <div class="card">
                     <img src="" class="card-img-top" alt="...">
                     <div class="card-body">
