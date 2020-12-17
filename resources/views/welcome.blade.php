@@ -14,9 +14,9 @@
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
 
 </head>
-<body  class="bg-green-400 font-sans leading-normal tracking-normal">
+<body  class="bg-blue-400 font-sans leading-normal tracking-normal">
 <!--Nav-->
-    <nav class="bg-green-800 p-2 mt-0 w-full"> <!-- Add this to make the nav fixed: "fixed z-10 top-0" -->
+    <nav class="bg-red-500 p-2 mt-0 w-full"> <!-- Add this to make the nav fixed: "fixed z-10 top-0" -->
         <div class="container mx-auto flex flex-wrap items-center">
             <div class="flex w-full md:w-1/2 justify-center md:justify-start text-white font-extrabold">
                 <p class="text-white no-underline hover:text-white hover:no-underline" href="#">
@@ -57,7 +57,7 @@
         </div>
         <!--Right Col-->
         <div class="w-full lg:w-1/2 lg:py-6 text-center">
-            <img src="{{url('./images/ludotheque.svg')}}" width="800px">
+            <img src="{{url('./images/bib.png')}}" width="800px">
             <!--Add your product image here-->
 {{--
             <svg class="fill-current text-gray-900 w-3/5 mx-auto" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M17 6V5h-2V2H3v14h5v4h3.25H11a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6zm-5.75 14H3a2 2 0 0 1-2-2V2c0-1.1.9-2 2-2h12a2 2 0 0 1 2 2v4a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-5.75zM11 8v8h6V8h-6zm3 11a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/></svg>
