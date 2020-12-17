@@ -19,51 +19,56 @@
                 @csrf
             <div style="margin-left: 2%;">
                 <h3>Choix de l'éditeur</h3>
-                <select name="ide" id="ide" size="1">
+                <select name="ide_editeur" id="ide_editeur" size="1">
                     @foreach( \App\Models\Editeur::all() as $editeur)
-                        @if (old('ide') == $editeur->id)
+                        @if (old('ide_editeur') == $editeur->id)
                             <option value="{{ $editeur->id }}" selected>{{ $editeur->nom }}</option>
                         @else
                             <option value="{{ $editeur->id }}">{{ $editeur->nom }}</option>
                         @endif
                     @endforeach
-                </select><br />
+                </select><br>
             </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
 
-
             <br>
-
+            <form name="form-create-jeu" method="post" action="{{route('jeu_tritheme')}}">
+                @csrf
             <div style="margin-left: 2%;">
                 <h3>Choix du thème</h3>
-                <select name="choixTheme" size="1">
+                <select name="theme_id" id="theme_id" size="1">
                     @foreach( \App\Models\Theme::all() as $theme)
-                        @if (old('theme') == $theme->id)
+                        @if (old('theme_id') == $theme->id)
                             <option value="{{ $theme->id }}" selected>{{ $theme->nom }}</option>
                         @else
                             <option value="{{ $theme->id }}">{{ $theme->nom }}</option>
                         @endif
                     @endforeach
-                </select><br />
-                <input type="button" onclick='window.location.reload(false)' value="Rechercher"/>
+                </select><br>
             </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
 
             <br>
 
-            <div style="margin-left: 2%;">
-                <h3>Choix du mécanisme</h3>
-                <select name="choixMecanisme" size="1">
-                    @foreach( \App\Models\Mecanique::all() as $mecanique)
-                        @if (old('mecanique') == $mecanique->id)
-                            <option value="{{ $mecanique->id }}" selected>{{ $mecanique->nom }}</option>
-                        @else
-                            <option value="{{ $mecanique->id }}">{{ $mecanique->nom }}</option>
-                        @endif
-                    @endforeach
-                </select><br>
-                <input type="button" onclick='window.location.reload(false)' value="Rechercher"/>
-            </div>
+            <form name="form-create-jeu" method="post" action="{{route('jeu_trimecanique')}}">
+                @csrf
+                <div style="margin-left: 2%;">
+                    <h3>Choix du mécanisme</h3>
+                    <select name="mecanique_id" id="mecanique_id" size="1">
+                        @foreach( \App\Models\Mecanique::all() as $mecanique)
+                            @if (old('mecanique_id') == $mecanique->id)
+                                <option value="{{ $mecanique->id }}" selected>{{ $mecanique->nom }}</option>
+                            @else
+                                <option value="{{ $mecanique->id }}">{{ $mecanique->nom }}</option>
+                            @endif
+                        @endforeach
+                    </select><br>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+
             <br>
         </div>
 
