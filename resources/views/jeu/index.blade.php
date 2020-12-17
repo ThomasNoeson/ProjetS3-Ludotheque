@@ -12,7 +12,7 @@
             </div>
             <br>
             <div>
-                <a style="margin-left: 2%;" href="{{ URL::route('jeu_index', $sort) }}">Trié par nom @if ($filter !== null)<i class="fas  @if ($sort == 0)fa-sort-down @else fa-sort-up @endif "></i> @endif</a>
+                <a style="margin-left: 2%;" href="{{ URL::route('jeu_index', $sort)}}">Trié par nom @if ($filter !== null)<i class="fas  @if ($sort == 0)fa-sort-down @else fa-sort-up @endif "></i> @endif</a>
             </div>
             <br>
 
@@ -27,10 +27,10 @@
                         @endif
                     @endforeach
                 </select><br />
-                <input href="choixEditeur" type="button" onclick='window.location.reload(false)' value="Rechercher"/>
+                <input href="tri_triediteur" type="button" onclick='window.location.reload(false)' value="Rechercher"/>
             </div>
 
-            <a href="choixEditeur" class="btn btn-primary">couc</a>
+            <a href="{{URL::route('jeu_triediteur', $sort) }}" class="btn btn-primary">couc</a>
 
             <br>
 
