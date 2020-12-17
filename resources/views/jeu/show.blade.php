@@ -67,21 +67,24 @@
                 </div>
             </div>
         </div>
+    </div>
+                    <br>
+    <h1>Commentaires:</h1>
+
     @auth
         <div class="card-body">
-            <form name="Avis" method="post" action="{{ URL::route('avis') }}">
-                @csrf
+            <form name="Avis" method="post" action="{{ URL::route('jeu_store') }}">
                 <div class="form-group">
                     <label for="description">Avis</label>
                     <div>
-                        <textarea name="description" id="com" class="form-control" required="">{{ old('description') }}</textarea>
+                        <textarea name="description" class="form-control" required="">{{ old('description') }}</textarea>
                     </div>
                 </div>
                 <div>
                 </div>
                 <div class="form-group">
                     <label for="description">Note</label>
-                    <select name="note" id="note">
+                    <select name="Note">
                         <option value="{{ 0 }}" selected>{{ "0/5" }}</option>
                         <option value="{{ 1 }}" selected>{{ "1/5" }}</option>
                         <option value="{{ 2 }}" selected>{{ "2/5" }}</option>
@@ -93,37 +96,8 @@
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
         </div>
-        @endauth
-                @auth
-                    <div class="card-body">
-                        <form name="Avis" method="post" action="{{ URL::route('jeu_store') }}">
-                            <div class="form-group">
-                                <label for="description">Avis</label>
-                                <div>
-                                    <textarea name="description" class="form-control" required="">{{ old('description') }}</textarea>
-                                </div>
-                            </div>
-                            <div>
-                            </div>
-                            <div class="form-group">
-                                <label for="description">Note</label>
-                                <select name="Note">
-                                    <option value="{{ 0 }}" selected>{{ "0/5" }}</option>
-                                    <option value="{{ 1 }}" selected>{{ "1/5" }}</option>
-                                    <option value="{{ 2 }}" selected>{{ "2/5" }}</option>
-                                    <option value="{{ 3 }}" selected>{{ "3/5" }}</option>
-                                    <option value="{{ 4 }}" selected>{{ "4/5" }}</option>
-                                    <option value="{{ 5 }}" selected>{{ "5/5" }}</option>
-                                </select>
-                            </div>
-                            <button type="submit" class="btn btn-primary">Submit</button>
-                        </form>
-                    </div>
-                    @endauth
-                    </div>
-                    <h1>Commentaires:</h1>
-                    <br>
-    <h1>Commentaires:</h1>
+    @endauth
+
         <br>
         @foreach ( $coms as $c)
             @if ($jeu->id == $c->jeu_id)
