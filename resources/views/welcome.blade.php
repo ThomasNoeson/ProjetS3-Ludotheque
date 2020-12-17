@@ -20,7 +20,7 @@
         <div class="container mx-auto flex flex-wrap items-center">
             <div class="flex w-full md:w-1/2 justify-center md:justify-start text-white font-extrabold">
                 <p class="text-white no-underline hover:text-white hover:no-underline" href="#">
-                    <span class="text-2xl pl-2"><i class="fa fa-home"></i> Horribilis Software</span>
+                    <span style="display:inline-block; color:whitesmoke; font-weight: bold; font-size:30px; text-shadow: #8E7CC3 0.1em 0.1em 0.2em" class="text-2xl pl-2"><img class="img-responsive" src="../images/logo.png" style="height:70px; weight:70px; display:inline-block;"> Horribilis Software</span>
                 </p>
             </div>
             <div class="flex w-full pt-2 content-center justify-between md:w-1/2 md:justify-end">
