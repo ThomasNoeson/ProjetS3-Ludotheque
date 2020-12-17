@@ -24,13 +24,13 @@ class JeuController extends Controller
      */
     public function index($sort = null)
     {
-        $listeDuree = Jeu::all();
+        $listeDuree = Jeu::paginate(10);
         $filter = null;
         if ($sort !== null) {
             if ($sort) {
-                $jeux = Jeu::all()->sortBy('nom');
+                $jeux = Jeu::select('jeux.*')->orderBy('nom')->paginate(10);
             } else {
-                $jeux = Jeu::all()->sortByDesc('nom');
+                $jeux = Jeu::select('jeux.*')->orderByDesc('nom')->paginate(10);
             }
             $sort = !$sort;
             $filter = true;
@@ -266,7 +266,7 @@ class JeuController extends Controller
 
     public function tri()
     {
-        $jeux = Jeu::all()->sortBy('nom');
+        $jeux = Jeu::paginate(10);
         return view('jeu.index', ['jeux' => $jeux]);
     }
 
