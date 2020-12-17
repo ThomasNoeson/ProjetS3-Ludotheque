@@ -78,29 +78,35 @@
     </div>
     <div class="row ">
 
+            @foreach ($jeux as $jeu)
+                <div style="margin-left: 2%;" class="col-4" >
+                    <div class="card">
+                        <img src="" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ $jeu->nom }}</h5>
+                            <p class="card-text">
+                                {{ \Illuminate\Support\Str::limit($jeu->description, 50, $end='...') }}<br/>
+                            <hr>
+                            {{ $jeu->theme}}
+                            <hr>
+                            durée : {{ $jeu->duree }}
+                            <hr>
+                            Nombre de joueur : {{ $jeu->nombre_joueurs }}
 
-        @foreach ($jeux as $jeu)
-            <div style="margin-left: 2%;" class="col-4" >
-                <div class="card">
-                    <img src="" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ $jeu->nom }}</h5>
-                        <p class="card-text">
-                            {{ \Illuminate\Support\Str::limit($jeu->description, 50, $end='...') }}<br/>
-                        <hr>
-                        {{ $jeu->theme}}
-                        <hr>
-                        durée : {{ $jeu->duree }}
-                        <hr>
-                        Nombre de joueur : {{ $jeu->nombre_joueurs }}
-
-                        <a href="{{ URL::route('jeu_show', $jeu->id) }}" class="btn btn-primary">Plus d'info</a>
+                            <a href="{{ URL::route('jeu_show', $jeu->id) }}" class="btn btn-primary">Plus d'info</a>
+                        </div>
                     </div>
                 </div>
-            </div>
+
+            @endforeach
+
+                <div class="row d-flex">
+                    {{$jeux->links()}}
+                </div>
+        <br>
+
     </div>
 
-    @endforeach
-
-
 @endsection
+
+
