@@ -82,6 +82,7 @@
                 <div class="form-group">
                     <label for="description">Note</label>
                     <select name="note" id="note">
+                        <option value="{{ 0 }}" selected>{{ "0/5" }}</option>
                         <option value="{{ 1 }}" selected>{{ "1/5" }}</option>
                         <option value="{{ 2 }}" selected>{{ "2/5" }}</option>
                         <option value="{{ 3 }}" selected>{{ "3/5" }}</option>
@@ -107,6 +108,7 @@
                             <div class="form-group">
                                 <label for="description">Note</label>
                                 <select name="Note">
+                                    <option value="{{ 0 }}" selected>{{ "0/5" }}</option>
                                     <option value="{{ 1 }}" selected>{{ "1/5" }}</option>
                                     <option value="{{ 2 }}" selected>{{ "2/5" }}</option>
                                     <option value="{{ 3 }}" selected>{{ "3/5" }}</option>
@@ -128,7 +130,24 @@
                 <ul>
                     <li>Auteur: {{$users->find($c->user_id)->name}}</li>
                     <li>Commentaire: {{$c->commentaire}}</li>
-                    <li>Note: {{$c->note}}</li>
+                    @if ($c->note == 0)
+                        <li style="background-color:red; border: 2px red solid; margin-right: 90%; text-align: center; color:black;">Note: {{$c->note}}</li>
+                    @endif
+                    @if ($c->note == 1)
+                        <li style="background-color:orangered; border: 2px orangered solid; margin-right: 90%; text-align: center; color:black;">Note: {{$c->note}}</li>
+                    @endif
+                    @if ($c->note == 2)
+                    <li style="background-color:orange; border: 2px orange solid; margin-right: 90%; text-align: center; color:black;">Note: {{$c->note}}</li>
+                    @endif
+                    @if ($c->note == 3)
+                    <li style="background-color:yellow; border: 2px yellow solid; margin-right: 90%; text-align: center; color:black;">Note: {{$c->note}}</li>
+                    @endif
+                    @if ($c->note == 4)
+                    <li style="background-color:greenyellow; border: 2px greenyellow solid; margin-right: 90%; text-align: center; color:black;">Note: {{$c->note}}</li>
+                    @endif
+                    @if ($c->note == 5)
+                    <li style="background-color:green; border: 2px green solid; margin-right: 90%; text-align: center; color:black;">Note: {{$c->note}}</li>
+                    @endif
                     <li>{{(date_diff(new \DateTime(), new DateTime($c->date_com)))->format("Il y a %D jour(s), %M mois, %Y an(s)")}} </li>
                 </ul>
                 <br>
