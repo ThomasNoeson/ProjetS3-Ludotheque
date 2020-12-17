@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AccueilController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\HomeController;
@@ -50,6 +51,8 @@ Route::post('/tritheme', [TriController::class, 'tritheme'])->name('jeu_tritheme
 Route::post('/trimecanique', [TriController::class, 'trimecanique'])->name('jeu_trimecanique');
 
 Route::post('/recherche}', [JeuController::class, 'recherche'])->name('jeu_recherche');
+
+Route::get('/dashboard/meilleur', [HomeController::class, 'meilleur'])->name('accueil_meilleur');
 
 Route::get('/enonce', function () {
     return view('enonce.index');
