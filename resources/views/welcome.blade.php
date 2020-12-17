@@ -48,9 +48,9 @@
     <div class="container mx-auto flex flex-col md:flex-row items-center my-12 md:my-24">
         <!--Left Col-->
         <div class="flex flex-col w-full lg:w-1/2 justify-center items-start pt-12 pb-24 px-6">
-            <p class="uppercase tracking-loose">IUT de Lens - Département Informatique</p>
-            <h1 class="font-bold text-3xl my-4">Ludothèque</h1>
-            <p class="leading-normal mb-4">Projet Marathon 2020 élaboré à l'aide de <a href="https://laravel.com/"> Laravel</a>.</p>
+            <p style="font-size:15px; color: black; text-shadow: white 0.1em 0.1em 0.2em;" class="uppercase tracking-loose">IUT de Lens - Département Informatique</p>
+            <h1 style="color: white; text-shadow: black 0.1em 0.1em 0.2em;" class="font-bold text-3xl my-4">Ludothèque</h1>
+            <p style="font-size:15px; color: black; text-shadow: white 0.1em 0.1em 0.2em;" class="leading-normal mb-4">Projet Marathon 2020 élaboré à l'aide de <a href="https://laravel.com/"> Laravel</a>.</p>
 {{--
             <a type="button" href="http://www.cril.univ-artois.fr/~hemery/enseignement/An20-21/m3104/index.html" class="bg-transparent hover:bg-gray-900 text-gray-900 hover:text-white rounded shadow hover:shadow-lg py-2 px-4 border border-gray-900 hover:border-transparent">Enoncé</a>
 --}}
