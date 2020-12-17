@@ -38,7 +38,7 @@ Route::get('/jeux/{sort?}', [JeuController::class, 'index'])->name('jeu_index');
 
 Route::post('/ajout', [JeuController::class, 'ajout']) -> name('ajout');
 
-Route::get('/jeux/sort/{nom_editeur}', [JeuController::class, 'triediteur'])->name('tri_triediteur');
+Route::post('/tri', [TriController::class, 'triediteur'])->name('jeu_triediteur');
 
 
 Route::get('/enonce', function () {

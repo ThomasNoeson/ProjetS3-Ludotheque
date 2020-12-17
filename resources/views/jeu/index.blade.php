@@ -15,23 +15,22 @@
                 <a style="margin-left: 2%;" href="{{ URL::route('jeu_index', $sort) }}">Trié par nom @if ($filter !== null)<i class="fas  @if ($sort == 0)fa-sort-down @else fa-sort-up @endif "></i> @endif</a>
             </div>
             <br>
-
+            <form name="form-create-jeu" method="post" action="{{route('jeu_triediteur')}}">
+                @csrf
             <div style="margin-left: 2%;">
                 <h3>Choix de l'éditeur</h3>
-                <select name="choixEditeur" size="1">
+                <select name="ide" id="ide" size="1">
                     @foreach( \App\Models\Editeur::all() as $editeur)
-                        @if (old('editeur') == $editeur->id)
+                        @if (old('ide') == $editeur->id)
                             <option value="{{ $editeur->id }}" selected>{{ $editeur->nom }}</option>
                         @else
                             <option value="{{ $editeur->id }}">{{ $editeur->nom }}</option>
                         @endif
                     @endforeach
                 </select><br />
-                <input href="tri_triediteur" type="button" onclick='window.location.reload(false)' value="Rechercher"/>
-
             </div>
-
-            <a href="{{URL::route('jeu_triediteur', $sort) }}" class="btn btn-primary">couc</a>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
 
 
             <br>
@@ -65,7 +64,6 @@
                 </select><br>
                 <input type="button" onclick='window.location.reload(false)' value="Rechercher"/>
             </div>
-
             <br>
         </div>
 
