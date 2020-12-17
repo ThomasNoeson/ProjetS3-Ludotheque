@@ -69,18 +69,19 @@
         </div>
     @auth
         <div class="card-body">
-            <form name="Avis" method="post" action="{{ URL::route('jeu_store') }}">
+            <form name="Avis" method="post" action="{{ URL::route('avis') }}">
+                @csrf
                 <div class="form-group">
                     <label for="description">Avis</label>
                     <div>
-                        <textarea name="description" class="form-control" required="">{{ old('description') }}</textarea>
+                        <textarea name="description" id="com" class="form-control" required="">{{ old('description') }}</textarea>
                     </div>
                 </div>
                 <div>
                 </div>
                 <div class="form-group">
                     <label for="description">Note</label>
-                    <select name="Note">
+                    <select name="note" id="note">
                         <option value="{{ 1 }}" selected>{{ "1/5" }}</option>
                         <option value="{{ 2 }}" selected>{{ "2/5" }}</option>
                         <option value="{{ 3 }}" selected>{{ "3/5" }}</option>

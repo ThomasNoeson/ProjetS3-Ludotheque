@@ -40,6 +40,8 @@ Route::get('/user/profile', function () {return view('jeu.profile');})->name('pr
 
 Route::post('/ajout', [JeuController::class, 'ajout']) -> name('ajout');
 
+Route::post('/avis', [JeuController::class, 'avis']) -> name('avis');
+
 Route::post('/tri', [TriController::class, 'triediteur'])->name('jeu_triediteur');
 
 
