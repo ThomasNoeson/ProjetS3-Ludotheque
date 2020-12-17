@@ -10,18 +10,17 @@
             <div class="card-title">Recherche</div>
             <form name="form-create-jeu" method="post" action="{{ URL::route('jeu_recherche') }}">
                 @csrf
-                <div class="col-12">
-                    <div class="col-6">
-                        <label for="nom">Nombre de joueur</label>
-                        <input type="text" id="nbjoueurs" name="nbjoueurs" value="{{ old('nbjoueurs') }}" class="form-control">
-                    </div>
-                    <div class="col-3">
-                        <select name="duree" id="duree" size="1">
-                            @foreach( \App\Models\Jeu::all() as $duree)
-                                <option value="{{ $duree->duree }}" selected>{{ $duree->duree }}</option>
-                            @endforeach
-                        </select>
-                    </div>
+                <div class="form-group">
+                    <label for="nom">Nombre de joueur</label>
+                    <input type="text" id="nbjoueurs" name="nbjoueurs" value="{{ old('nbjoueurs') }}" class="form-control">
+                </div>
+                <div class="form-group">
+                    <select name="duree" id="duree" size="1">
+
+                        @foreach( \App\Models\Jeu::all() as $duree)
+                            <option value="{{ $duree->duree }}" selected>{{ $duree->duree }}</option>
+                        @endforeach
+                    </select>
                 </div>
                 <button style="background-color:#8E7CC3; border-color: #8E7CC3;" type="submit" class="btn btn-primary">Submit</button>
             </form>
@@ -96,8 +95,8 @@
     </div>
 
     <div class="row col-12">
-        <div class="card-columns">
-            @foreach ($jeux as $jeu)
+            <div class="card-columns">
+        @foreach ($jeux as $jeu)
                 <div class="card">
                     <img src="" class="card-img-top" alt="...">
                     <div class="card-body">
@@ -114,9 +113,7 @@
                         <a style="background-color:#8E7CC3; border-color: #8E7CC3;" href="{{ URL::route('jeu_show', $jeu->id) }}" class="btn btn-primary">Plus d'info</a>
                     </div>
                 </div>
-
-
-
+                
             @endforeach
         </div>
     </div>
