@@ -24,6 +24,7 @@ class JeuController extends Controller
      */
     public function index($sort = null)
     {
+        $listeDuree = Jeu::all();
         $filter = null;
         if ($sort !== null) {
             if ($sort) {
@@ -38,7 +39,7 @@ class JeuController extends Controller
             $sort = true;
 
         }
-        return view('jeu.index', ['jeux' => $jeux, 'sort' => intval($sort), 'filter' => $filter]);
+        return view('jeu.index', ['jeux' => $jeux, 'sort' => intval($sort), 'filter' => $filter, 'd' => $listeDuree]);
     }
 
     /**
@@ -267,6 +268,12 @@ class JeuController extends Controller
     {
         $jeux = Jeu::all()->sortBy('nom');
         return view('jeu.index', ['jeux' => $jeux]);
+    }
+
+    public function recherche(Request $request) {
+        if ($request->nbjoueurs == null or $request->duree == null) return Redirect::route('jeu_index');
+        $jeux = Jeu::all()->where('nombre_joueurs', $request->nbjoueurs)->where('duree', $request->duree);
+        return view('jeu.recherche', ['jeux' => $jeux]);
     }
 
 }
