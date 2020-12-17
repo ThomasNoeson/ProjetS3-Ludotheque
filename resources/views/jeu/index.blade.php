@@ -98,8 +98,8 @@
 
     </div>
     <div class="row col-12">
+            <div class="card-columns">
         @foreach ($jeux as $jeu)
-            <div style="margin-left: 2%;" class="row col-4" >
                 <div class="card">
                     <img src="" class="card-img-top" alt="...">
                     <div class="card-body">
@@ -116,10 +116,12 @@
                         <a href="{{ URL::route('jeu_show', $jeu->id) }}" class="btn btn-primary">Plus d'info</a>
                     </div>
                 </div>
-            </div>
-    </div>
+
+
 
     @endforeach
+            </div>
+    </div>
     {{$jeux->links()}}
 
 

@@ -41,7 +41,7 @@
                 <ul>
                     <li>Jeu: {{\App\Models\Jeu::find($a->jeu_id)->nom}}</li>
                     <li>Prix: {{$a->prix}}</li>
-                    <li>Date d'achat: {{ (new DateTime($a->date_achat))->format("%D-%M-%Y")}}</li>
+                    <li>Date d'achat: {{ (new DateTime($a->date_achat))->format("D-M-Y")}}</li>
                 </ul>
                 <br>
             @endif
