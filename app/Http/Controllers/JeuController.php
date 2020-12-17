@@ -60,7 +60,7 @@ class JeuController extends Controller
         $notemin = $com->min('note'); //note la plus basse
         foreach ($com as $c) { //nombre de com du jeu
             if ($c->jeu_id == $id)
-            $nbCom = $nbCom + 1;
+                $nbCom = $nbCom + 1;
         }
         $nbTot = $com->count(); // nombre total de coms
         $moy = $this->moynote($id); //moyenne des notes du jeu
@@ -74,7 +74,6 @@ class JeuController extends Controller
         $NbUtilisateur = $this->NbUtilisateur();
 
         $UtilisateurAchete = $this->UtilisateurAchete($id);
-
 
 
         return view('jeu.show', ['max' => $notemax, 'min' => $notemin, 'nbCom' => $nbCom, 'nbTot' => $nbTot, 'moy' => $moy, 'jeu' => $jeu, 'coms' => $com, 'users' => $user, 'PrixMoyen' => $PrixMoyen, 'PrixHaut' => $PrixHaut, 'PrixBas' => $PrixBas, 'NbUtilisateur' => $NbUtilisateur, 'UtilisateurAchete' => $UtilisateurAchete]);
@@ -144,17 +143,18 @@ class JeuController extends Controller
 
         return Redirect::route('jeu_index');
     }
-/*
-    public function avis(Request $request) {
-        $com = new Commentaire();
-        $com->commentaire = $request->commentaire;
-        $com->date = new \DateTime();
-        $note = ?;
-        $jeu_id = ?;
-        $user_id = Auth::user()->id;
-        $com->save();
-    }
-*/
+
+    /*
+        public function avis(Request $request) {
+            $com = new Commentaire();
+            $com->commentaire = $request->commentaire;
+            $com->date = new \DateTime();
+            $note = ?;
+            $jeu_id = ?;
+            $user_id = Auth::user()->id;
+            $com->save();
+        }
+    */
 
     function PrixMoyen($id_jeu)
     {
@@ -225,7 +225,8 @@ class JeuController extends Controller
         return Redirect::route('jeu_index');
     }
 
-    public function supprimer() {
+    public function supprimer()
+    {
 
     }
 
@@ -246,39 +247,45 @@ class JeuController extends Controller
     }
 
 
-    public function moynote($id) {
+    public function moynote($id)
+    {
         $com = Commentaire::all();
         $total = 0;
         $count = 0;
         foreach ($com as $c) {
-            if ($c->jeu_id == $id){
+            if ($c->jeu_id == $id) {
                 $total = $total + $c->note;
                 $count = $count + 1;
             }
         }
-        return $total/$count;
+        return $total / $count;
     }
 
-    public function tri ()
+    public function tri()
     {
         $jeux = Jeu::all()->sortBy('nom');
         return view('jeu.index', ['jeux' => $jeux]);
     }
 
-    public function choixEditeur ($nom_editeur)
+    public function choixEditeur($nom_editeur)
     {
         $Editeur = Editeur::all();
         $Jeu = Jeu::all();
-        foreach ($Editeur as $i){
-            if ($i["nom"] == $nom_editeur){
+        foreach ($Editeur as $i) {
+            if ($i["nom"] == $nom_editeur) {
                 $x = $i["id"];
             }
         }
-        foreach ($Jeu as $j){
-            if ($j["editeur_id"] == $x){
+        foreach ($Jeu as $j) {
+            if ($j["editeur_id"] == $x) {
                 echo($j["nom"]);
             }
         }
+
+    }
+
+    public function triediteur($nom_editeur)
+    {
         $TriEditeur = TriEditeur($nom_editeur);
         return view('jeu.index', ['TriEditeur' => $TriEditeur]);
     }

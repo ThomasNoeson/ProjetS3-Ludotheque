@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\JeuController;
+use App\Http\Controllers\TriController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -35,6 +37,8 @@ Route::post('/jeux/create', [JeuController::class, 'store'])->name('jeu_store')-
 Route::get('/jeux/{sort?}', [JeuController::class, 'index'])->name('jeu_index');
 
 Route::post('/ajout', [JeuController::class, 'ajout']) -> name('ajout');
+
+Route::get('/jeux/sort/{nom_editeur}', [JeuController::class, 'triediteur'])->name('tri_triediteur');
 
 
 Route::get('/enonce', function () {

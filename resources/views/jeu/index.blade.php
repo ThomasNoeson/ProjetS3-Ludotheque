@@ -27,10 +27,12 @@
                         @endif
                     @endforeach
                 </select><br />
-                <input href="choixEditeur" type="button" onclick='window.location.reload(false)' value="Rechercher"/>
+                <input href="tri_triediteur" type="button" onclick='window.location.reload(false)' value="Rechercher"/>
+
             </div>
 
-            <a href="choixEditeur" class="btn btn-primary">coucou</a>
+            <a href="{{URL::route('jeu_triediteur', $sort) }}" class="btn btn-primary">couc</a>
+
 
             <br>
 
