@@ -5,6 +5,27 @@
 @section('content')
 
     <h1 class="text-center">Tous les jeux de la super ludotheque de l'IUT de Lens</h1><br>
+    @auth
+        <div style="margin-left: 2%;" class="card-body">
+            <div class="card-title">Recherche</div>
+            <form name="form-create-jeu" method="post" action="{{ URL::route('jeu_recherche') }}">
+                @csrf
+                <div class="form-group">
+                    <label for="nom">Nombre de joueur</label>
+                    <input type="text" id="nbjoueurs" name="nbjoueurs" value="{{ old('nbjoueurs') }}" class="form-control">
+                </div>
+                <div class="form-group">
+                    <select name="duree" id="duree" size="1">
+
+                    @foreach( $d as $duree)
+                        <option value="{{ $duree->duree }}" selected>{{ $duree->duree }}</option>
+                    @endforeach
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    @endauth
     <div class="row">
         <div>
             <div>

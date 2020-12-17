@@ -49,7 +49,8 @@ Route::post('/tritheme', [TriController::class, 'tritheme'])->name('jeu_tritheme
 
 Route::post('/trimecanique', [TriController::class, 'trimecanique'])->name('jeu_trimecanique');
 
+Route::post('/recherche}', [JeuController::class, 'recherche'])->name('jeu_recherche');
+
 Route::get('/enonce', function () {
     return view('enonce.index');
 });
-
