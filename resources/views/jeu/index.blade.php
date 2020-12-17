@@ -17,7 +17,7 @@
                 <div class="form-group">
                     <select name="duree" id="duree" size="1">
 
-                    @foreach( $d as $duree)
+                    @foreach( \App\Models\Jeu::all() as $duree)
                         <option value="{{ $duree->duree }}" selected>{{ $duree->duree }}</option>
                     @endforeach
                     </select>

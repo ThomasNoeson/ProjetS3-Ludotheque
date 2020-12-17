@@ -24,7 +24,7 @@ class JeuController extends Controller
      */
     public function index($sort = null)
     {
-        $listeDuree = Jeu::paginate(10);
+        $listeDuree = Jeu::all();
         $filter = null;
         if ($sort !== null) {
             if ($sort) {

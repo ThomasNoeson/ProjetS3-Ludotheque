@@ -14,17 +14,17 @@ class TriController extends Controller
     }
 
     public function triediteur(Request $request){ //Affichage en fonction des editeurs
-        $jeux = Jeu::paginate(10)->where('editeur_id', $request->ide_editeur);
+        $jeux = Jeu::select('jeux.*')->where('editeur_id', $request->ide_editeur)->paginate(10);
         return view('jeu.index', ['jeux' => $jeux, 'sort' => 0, 'filter' => null]);
     }
 
     public function tritheme(Request $request){ //Affichage en fonction des themes
-        $jeux = Jeu::paginate(10)->where('theme_id', $request->theme_id);
+        $jeux = Jeu::select('jeux.*')->where('theme_id', $request->theme_id)->paginate(10);
         return view('jeu.index', ['jeux' => $jeux, 'sort' => 0, 'filter' => null]);
     }
 
     public function trimecanique(Request $request){ //Affichage en fonction des mecanismes
-        $jeux = Jeu::paginate(10)->where('id', $request->mecanique_id);
+        $jeux = Jeu::select('jeux.*')->where('id', $request->mecanique_id)->paginate(10);
         return view('jeu.index', ['jeux' => $jeux, 'sort' => 0, 'filter' => null]);
     }
 }
