@@ -40,6 +40,7 @@ Route::post('/ajout', [JeuController::class, 'ajout']) -> name('ajout');
 
 Route::post('/tri', [TriController::class, 'triediteur'])->name('jeu_triediteur');
 
+Route::post('/jeux/avis', [JeuController::class, 'avis'])->name('avis');
 
 Route::get('/enonce', function () {
     return view('enonce.index');

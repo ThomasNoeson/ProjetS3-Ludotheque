@@ -268,4 +268,13 @@ class JeuController extends Controller
         $jeux = Jeu::all()->sortBy('nom');
         return view('jeu.index', ['jeux' => $jeux]);
     }
+    public function avis(Request $request){
+        $com = new Commentaire();
+        $com->commentaire=$request ->contenu;
+        $com->date_com=new \DateTime();
+        $com->note=$request ->nt;
+        $com->jeu_id = 1;
+        $com->user_id = Auth::user()->id;
+        $com->save();
+    }
 }
