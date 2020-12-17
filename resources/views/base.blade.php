@@ -22,7 +22,7 @@
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
 
 </head>
-<body style="padding-top: 50px;" class="bg-green-400">
+<body style="padding-top: 50px; background-color:#6FA8DC;">
 
 @section('navbar')
 <nav style="background-color:#e06666;" class="color_Nav navbar navbar-expand-md navbar-dark bg-green-800 fixed-top">

@@ -4,102 +4,101 @@
 
 @section('content')
 
-    <h1 class="text-center">Tous les jeux de la super ludotheque de l'IUT de Lens</h1><br>
+    <h1 style="margin-top: 3%; font-weight: bold; " class="text-center">Tous les jeux de la super ludotheque de l'IUT de Lens</h1><br>
     @auth
         <div style="margin-left: 2%;" class="card-body">
             <div class="card-title">Recherche</div>
             <form name="form-create-jeu" method="post" action="{{ URL::route('jeu_recherche') }}">
                 @csrf
-                <div class="form-group">
-                    <label for="nom">Nombre de joueur</label>
-                    <input type="text" id="nbjoueurs" name="nbjoueurs" value="{{ old('nbjoueurs') }}" class="form-control">
-                </div>
-                <div class="form-group">
-                    <select name="duree" id="duree" size="1">
+                <div>
+                    <div class="form-group col-6">
+                        <label for="nom">Nombre de joueur</label>
+                        <input type="text" id="nbjoueurs" name="nbjoueurs" value="{{ old('nbjoueurs') }}" class="form-control">
+                    </div>
+                    <div class="form-group col-3">
+                        <select name="duree" id="duree" size="1">
 
-                    @foreach( \App\Models\Jeu::all() as $duree)
-                        <option value="{{ $duree->duree }}" selected>{{ $duree->duree }}</option>
-                    @endforeach
-                    </select>
+                        @foreach( \App\Models\Jeu::all() as $duree)
+                            <option value="{{ $duree->duree }}" selected>{{ $duree->duree }}</option>
+                        @endforeach
+                        </select>
+                    </div>
                 </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button style="background-color:#8E7CC3; border-color: #8E7CC3;" type="submit" class="btn btn-primary">Submit</button>
             </form>
         </div>
     @endauth
-    <div class="row">
-        <div>
-            <div>
-                <a style="margin-left: 2%;" class="btn btn-success" href="{{ URL::route('jeu_create') }}">Ajouter un jeu</a>
+
+    <div style="margin-bottom: 3%;" class="row col-12">
+        <div class="center col-12">
+            <div style="margin-bottom: 2%;">
+                <a style="margin-left: 2%; background-color:#E06666; border-color: #E06666;" class="row btn btn-success" href="{{ URL::route('jeu_create') }}">Ajouter un jeu</a>
+                <a style="margin-left: 2%; background-color:#E06666; border-color: #E06666;" class="row btn btn-success" href="{{ URL::route('jeu_index', $sort) }}">Trié par nom @if ($filter !== null)<i class="fas  @if ($sort == 0)fa-sort-down @else fa-sort-up @endif "></i> @endif</a>
             </div>
-            <br>
-            <div>
-                <a style="margin-left: 2%;" href="{{ URL::route('jeu_index', $sort) }}">Trié par nom @if ($filter !== null)<i class="fas  @if ($sort == 0)fa-sort-down @else fa-sort-up @endif "></i> @endif</a>
-            </div>
-            <br>
-
-
-
-            <form name="form-create-jeu" method="post" action="{{route('jeu_triediteur')}}">
-                @csrf
-            <div style="margin-left: 2%;">
-                <h3>Choix de l'éditeur</h3>
-                <select name="ide_editeur" id="ide_editeur" size="1">
-                    @foreach( \App\Models\Editeur::all() as $editeur)
-                        @if (old('ide_editeur') == $editeur->id)
-                            <option value="{{ $editeur->id }}" selected>{{ $editeur->nom }}</option>
-                        @else
-                            <option value="{{ $editeur->id }}">{{ $editeur->nom }}</option>
-                        @endif
-                    @endforeach
-                </select><br>
-            </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
-
-            <br>
-            <form name="form-create-jeu" method="post" action="{{route('jeu_tritheme')}}">
-                @csrf
-            <div style="margin-left: 2%;">
-                <h3>Choix du thème</h3>
-                <select name="theme_id" id="theme_id" size="1">
-                    @foreach( \App\Models\Theme::all() as $theme)
-                        @if (old('theme_id') == $theme->id)
-                            <option value="{{ $theme->id }}" selected>{{ $theme->nom }}</option>
-                        @else
-                            <option value="{{ $theme->id }}">{{ $theme->nom }}</option>
-                        @endif
-                    @endforeach
-                </select><br>
-            </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
-
-            <br>
-
-            <form name="form-create-jeu" method="post" action="{{route('jeu_trimecanique')}}">
-                @csrf
+        </div>
+        <div class="card-columns center">
+            <div style="background-color:#8E7CC3; padding-top: 2%; color:whitesmoke; box-shadow: 2px 2px 2px #8E7CC3;" class="card">
+                <form name="form-create-jeu" method="post" action="{{route('jeu_triediteur')}}">
+                    @csrf
                 <div style="margin-left: 2%;">
-                    <h3>Choix du mécanisme</h3>
-                    <select name="mecanique_id" id="mecanique_id" size="1">
-                        @foreach( \App\Models\Mecanique::all() as $mecanique)
-                            @if (old('mecanique_id') == $mecanique->id)
-                                <option value="{{ $mecanique->id }}" selected>{{ $mecanique->nom }}</option>
+                    <h3 style="text-align:center;">Choix d'un éditeur</h3>
+                    <select style="color:black;" class="col-10" name="ide_editeur" id="ide_editeur" size="1">
+                        @foreach( \App\Models\Editeur::all() as $editeur)
+                            @if (old('ide_editeur') == $editeur->id)
+                                <option value="{{ $editeur->id }}" selected>{{ $editeur->nom }}</option>
                             @else
-                                <option value="{{ $mecanique->id }}">{{ $mecanique->nom }}</option>
+                                <option value="{{ $editeur->id }}">{{ $editeur->nom }}</option>
                             @endif
                         @endforeach
-                    </select><br>
+                    </select>
                 </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
+                    <button style="background-color:whitesmoke; border-color: black; color:black; font-size:12px; margin: 2%;" type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
 
-            <br>
+            <div style="background-color:#8E7CC3; padding-top: 2%; color:whitesmoke; box-shadow: 2px 2px 2px #8E7CC3;" class="card">
+                <form name="form-create-jeu" method="post" action="{{route('jeu_tritheme')}}">
+                    @csrf
+                <div style="margin-left: 2%;">
+                    <h3 style="text-align:center;">Choix d'un thème</h3>
+                    <select style="color:black;" class="col-10" name="theme_id" id="theme_id" size="1">
+                        @foreach( \App\Models\Theme::all() as $theme)
+                            @if (old('theme_id') == $theme->id)
+                                <option value="{{ $theme->id }}" selected>{{ $theme->nom }}</option>
+                            @else
+                                <option value="{{ $theme->id }}">{{ $theme->nom }}</option>
+                            @endif
+                        @endforeach
+                    </select>
+                </div>
+                    <button style="background-color:whitesmoke; border-color: black; color:black; font-size:12px; margin: 2%;" type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+
+            <div style="background-color:#8E7CC3; padding-top: 2%; color:whitesmoke; box-shadow: 2px 2px 2px #8E7CC3;" class="card">
+                <form name="form-create-jeu" method="post" action="{{route('jeu_trimecanique')}}">
+                    @csrf
+                    <div style="margin-left: 2%;">
+                        <h3 style="text-align:center;">Choix d'un mécanisme</h3>
+                        <select style="color:black;" class="col-10" name="mecanique_id" id="mecanique_id" size="1">
+                            @foreach( \App\Models\Mecanique::all() as $mecanique)
+                                @if (old('mecanique_id') == $mecanique->id)
+                                    <option value="{{ $mecanique->id }}" selected>{{ $mecanique->nom }}</option>
+                                @else
+                                    <option value="{{ $mecanique->id }}">{{ $mecanique->nom }}</option>
+                                @endif
+                            @endforeach
+                        </select>
+                    </div>
+                    <button style="background-color:whitesmoke; border-color: black; color:black; font-size:12px; margin: 2%;" type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
         </div>
-
     </div>
+
     <div class="row col-12">
-        @foreach ($jeux as $jeu)
-            <div style="margin-left: 2%;" class="row col-4" >
+        <div class="card-columns">
+            @foreach ($jeux as $jeu)
                 <div class="card">
                     <img src="" class="card-img-top" alt="...">
                     <div class="card-body">
@@ -113,14 +112,17 @@
                         <hr>
                         Nombre de joueur : {{ $jeu->nombre_joueurs }}
 
-                        <a href="{{ URL::route('jeu_show', $jeu->id) }}" class="btn btn-primary">Plus d'info</a>
+                        <a style="background-color:#8E7CC3; border-color: #8E7CC3;" href="{{ URL::route('jeu_show', $jeu->id) }}" class="btn btn-primary">Plus d'info</a>
                     </div>
                 </div>
-            </div>
-    </div>
 
-    @endforeach
+
+
+            @endforeach
+        </div>
+    </div>
+    <br>
     {{$jeux->links()}}
 
-
+    <br>
 @endsection

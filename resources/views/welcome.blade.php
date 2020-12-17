@@ -14,7 +14,7 @@
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
 
 </head>
-<body  class="bg-blue-400 font-sans leading-normal tracking-normal">
+<body class="bg-blue-400 font-sans leading-normal tracking-normal">
 <!--Nav-->
     <nav class="bg-red-500 p-2 mt-0 w-full"> <!-- Add this to make the nav fixed: "fixed z-10 top-0" -->
         <div class="container mx-auto flex flex-wrap items-center">
