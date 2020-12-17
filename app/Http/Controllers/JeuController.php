@@ -74,8 +74,7 @@ class JeuController extends Controller
         $NbUtilisateur = $this->NbUtilisateur();
 
         $UtilisateurAchete = $this->UtilisateurAchete($id);
-
-
+        
         return view('jeu.show', ['max' => $notemax, 'min' => $notemin, 'nbCom' => $nbCom, 'nbTot' => $nbTot, 'moy' => $moy, 'jeu' => $jeu, 'coms' => $com, 'users' => $user, 'PrixMoyen' => $PrixMoyen, 'PrixHaut' => $PrixHaut, 'PrixBas' => $PrixBas, 'NbUtilisateur' => $NbUtilisateur, 'UtilisateurAchete' => $UtilisateurAchete]);
 
 
@@ -269,13 +268,5 @@ class JeuController extends Controller
         $jeux = Jeu::all()->sortBy('nom');
         return view('jeu.index', ['jeux' => $jeux]);
     }
-    public function avis(Request $request){
-        $com = new Commentaire();
-        $com->commentaire=$request ->contenu;
-        $com->date_com=new \DateTime();
-        $com->note=$request ->nt;
-        $com->jeu_id = 1;
-        $com->user_id = Auth::user()->id;
-        $com->save();
-    }
+
 }
