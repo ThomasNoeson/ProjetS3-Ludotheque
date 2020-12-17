@@ -93,23 +93,6 @@
             </form>
         </div>
         @endauth
-        <h1>Commentaires:</h1>
-        <br>
-        @foreach ( $coms as $c)
-            @if ($jeu->id == $c->jeu_id)
-                <ul>
-                    <li>Auteur: {{$users->find($c->user_id)->name}}</li>
-                    <li>Commentaire: {{$c->commentaire}}</li>
-                    <li>Note: {{$c->note}}</li>
-                </ul>
-                <br>
-                @endif
-                @endforeach
-                </div>
-                17 décembre 2020
-
-                <br>
-                <div>
                 @auth
                     <div class="card-body">
                         <form name="Avis" method="post" action="{{ URL::route('jeu_store') }}">
@@ -138,20 +121,7 @@
                     </div>
                     <h1>Commentaires:</h1>
                     <br>
-                    @foreach ( $coms as $c)
-                        @if ($jeu->id == $c->jeu_id)
-                            <ul>
-                                <li>Auteur: {{$users->find($c->user_id)->name}}</li>
-                                <li>Commentaire: {{$c->commentaire}}</li>
-                                <li>Note: {{$c->note}}</li>
-                            </ul>
-                            <br>
-                            @endif
-                            @endforeach
-                            </div>
-                            17 décembre 2020
-
-                            <h1>Commentaires:</h1>
+    <h1>Commentaires:</h1>
         <br>
         @foreach ( $coms as $c)
             @if ($jeu->id == $c->jeu_id)
