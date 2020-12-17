@@ -36,6 +36,8 @@ Route::post('/jeux/create', [JeuController::class, 'store'])->name('jeu_store')-
 
 Route::get('/jeux/{sort?}', [JeuController::class, 'index'])->name('jeu_index');
 
+Route::get('/user/profile', function () {return view('jeu.profile');})->name('profile');
+
 Route::post('/ajout', [JeuController::class, 'ajout']) -> name('ajout');
 
 Route::post('/tri', [TriController::class, 'triediteur'])->name('jeu_triediteur');

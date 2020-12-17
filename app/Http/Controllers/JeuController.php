@@ -243,7 +243,7 @@ class JeuController extends Controller
         $achat->lieu = $request->lieu;
         $achat->prix = $request->prix;
         $achat->save();
-        return Redirect::route('jeu_index');
+        return Redirect::route('profile');
 
     }
 
