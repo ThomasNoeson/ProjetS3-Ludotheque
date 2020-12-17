@@ -74,7 +74,7 @@ class JeuController extends Controller
         $NbUtilisateur = $this->NbUtilisateur();
 
         $UtilisateurAchete = $this->UtilisateurAchete($id);
-        
+
         return view('jeu.show', ['max' => $notemax, 'min' => $notemin, 'nbCom' => $nbCom, 'nbTot' => $nbTot, 'moy' => $moy, 'jeu' => $jeu, 'coms' => $com, 'users' => $user, 'PrixMoyen' => $PrixMoyen, 'PrixHaut' => $PrixHaut, 'PrixBas' => $PrixBas, 'NbUtilisateur' => $NbUtilisateur, 'UtilisateurAchete' => $UtilisateurAchete]);
 
 
